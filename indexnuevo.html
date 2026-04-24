@@ -1,0 +1,2832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FIRST Ready - Aprendé inglés para el First</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;0,800;1,400&family=Inter:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #fef7ed;
+  --bg-2: #fff3e0;
+  --ink: #2d1b0e;
+  --ink-soft: #5c4033;
+  --accent: #e63946;
+  --accent-2: #457b9d;
+  --accent-3: #f4a261;
+  --accent-4: #2a9d8f;
+  --card: #ffffff;
+  --shadow: 0 4px 20px rgba(45, 27, 14, 0.08);
+  --shadow-hover: 0 8px 30px rgba(45, 27, 14, 0.15);
+  --radius: 18px;
+  --radius-sm: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.doodles-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+.doodle {
+  position: absolute;
+  font-size: 3rem;
+  opacity: 0.08;
+  user-select: none;
+  animation: float 20s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+.app { position: relative; z-index: 1; }
+
+/* HEADER */
+header {
+  background: var(--card);
+  border-bottom: 2px solid rgba(45, 27, 14, 0.08);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.logo {
+  font-family: "Fraunces", serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo span.sub {
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+nav { display: flex; gap: 0.3rem; flex-wrap: wrap; }
+nav button {
+  background: transparent;
+  border: none;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+nav button:hover { background: var(--bg-2); color: var(--ink); }
+nav button.active {
+  background: var(--accent);
+  color: white;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.section { display: none; animation: fadeIn 0.4s ease; }
+.section.active { display: block; }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+h2 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1.1;
+  margin: 2rem 0 1rem;
+}
+h3 {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  margin: 1.5rem 0 0.8rem;
+}
+p { margin-bottom: 1rem; }
+
+.subtitle {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  color: var(--accent-2);
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  border: 1px solid rgba(45, 27, 14, 0.05);
+}
+.card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+/* INICIO */
+.hero-quote {
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-3) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.hero-quote::before {
+  content: "\201C";
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  font-size: 10rem;
+  font-family: "Fraunces", serif;
+  opacity: 0.15;
+  line-height: 1;
+}
+.hero-quote .quote-en {
+  font-family: "Fraunces", serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.hero-quote .quote-es {
+  font-size: 1.05rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+.hero-quote .quote-author {
+  font-family: "Caveat", cursive;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  opacity: 0.9;
+  position: relative;
+  z-index: 1;
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.progress-card {
+  background: var(--card);
+  padding: 1.2rem;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.progress-card .num {
+  font-family: "Fraunces", serif;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+.progress-card .label {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.progress-bar-wrap {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+.progress-bar {
+  background: var(--bg-2);
+  height: 14px;
+  border-radius: 7px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+.progress-bar-fill {
+  background: linear-gradient(90deg, var(--accent-4), var(--accent-2));
+  height: 100%;
+  border-radius: 7px;
+  transition: width 0.6s ease;
+}
+
+.quick-access {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+.quick-card {
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+.quick-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+.quick-card .emoji { font-size: 2.5rem; display: block; margin-bottom: 0.5rem; }
+.quick-card .title {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--ink);
+}
+
+/* LECCIONES */
+.lesson-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.lesson-card {
+  background: var(--card);
+  padding: 1.3rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: all 0.3s;
+  border-left: 4px solid var(--accent-2);
+  position: relative;
+}
+.lesson-card.done { border-left-color: var(--accent-4); }
+.lesson-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.lesson-card .num {
+  font-family: "Caveat", cursive;
+  font-size: 1.2rem;
+  color: var(--accent-3);
+}
+.lesson-card .title {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  margin: 0.3rem 0;
+}
+.lesson-card .desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+.lesson-card .check {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+}
+
+.lesson-view {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.lesson-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px dashed var(--bg-2);
+}
+.lesson-controls { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.btn.secondary { background: var(--accent-2); }
+.btn.tertiary { background: var(--accent-4); }
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink-soft);
+}
+.btn.ghost:hover { background: var(--ink); color: white; }
+.btn.small { padding: 0.4rem 0.8rem; font-size: 0.8rem; }
+
+.audio-toggle {
+  display: inline-flex;
+  background: var(--bg-2);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+}
+.audio-toggle button {
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.7rem;
+  border-radius: 7px;
+  font-size: 0.8rem;
+  cursor: pointer;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+.audio-toggle button.active {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  background: var(--bg-2);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+th, td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(45, 27, 14, 0.08);
+}
+th {
+  background: var(--accent-2);
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) { background: rgba(255,255,255,0.5); }
+
+.inline-table {
+  font-size: 0.92rem;
+  margin: 0.8rem 0 1.2rem;
+  box-shadow: var(--shadow);
+}
+.inline-table th {
+  background: var(--accent-3);
+  font-size: 0.85rem;
+}
+.inline-table td {
+  padding: 0.6rem 0.9rem;
+}
+.inline-table td:first-child {
+  font-weight: 600;
+}
+
+.example-box {
+  background: var(--bg-2);
+  border-left: 4px solid var(--accent-3);
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-sm);
+  margin: 1rem 0;
+}
+.example-box .en { font-weight: 600; color: var(--ink); }
+.example-box .es { color: var(--ink-soft); font-style: italic; font-size: 0.95rem; }
+
+.exercise {
+  background: var(--bg-2);
+  padding: 1.2rem;
+  border-radius: var(--radius-sm);
+  margin: 1rem 0;
+}
+.exercise .question {
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.exercise .options { display: flex; flex-direction: column; gap: 0.5rem; }
+.exercise .option {
+  background: var(--card);
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+.exercise .option:hover { border-color: var(--accent-2); }
+.exercise .option.correct { background: var(--accent-4); color: white; border-color: var(--accent-4); }
+.exercise .option.wrong { background: var(--accent); color: white; border-color: var(--accent); }
+.exercise input[type="text"] {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: 2px solid var(--bg);
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background: var(--card);
+}
+.exercise input[type="text"]:focus { outline: none; border-color: var(--accent-2); }
+.exercise .feedback {
+  margin-top: 0.6rem;
+  padding: 0.6rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  display: none;
+}
+.exercise .feedback.show { display: block; }
+.exercise .feedback.ok { background: rgba(42, 157, 143, 0.15); color: var(--accent-4); }
+.exercise .feedback.no { background: rgba(230, 57, 70, 0.15); color: var(--accent); }
+
+/* HISTORIAS */
+.stories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+.story-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+}
+.story-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.story-card .emoji-hero {
+  background: linear-gradient(135deg, var(--accent-3), var(--accent));
+  padding: 2.5rem;
+  text-align: center;
+  font-size: 4rem;
+}
+.story-card .body { padding: 1.2rem; }
+.story-card .title {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+.story-card .level {
+  font-size: 0.8rem;
+  color: var(--accent-2);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.story-view {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.story-view .story-hero {
+  text-align: center;
+  font-size: 5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--accent-3), var(--accent));
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+.story-text { font-size: 1.05rem; line-height: 1.8; }
+.story-text p { margin-bottom: 1.2rem; }
+
+/* tooltips */
+.word-link {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-color: var(--accent-2);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  color: var(--accent-2);
+  font-weight: 500;
+  position: relative;
+}
+.word-auto {
+  border-bottom: 1px dotted var(--accent-3);
+  cursor: help;
+  position: relative;
+}
+#tooltip {
+  position: fixed;
+  background: var(--ink);
+  color: white;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  max-width: 280px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+#tooltip.visible { opacity: 1; transform: translateY(0); }
+#tooltip .tt-word {
+  font-weight: 600;
+  color: var(--accent-3);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+#tooltip .tt-trans { margin-top: 0.2rem; }
+
+/* GEOGRAFIA */
+.geo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+.geo-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+}
+.geo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.geo-card .hero {
+  padding: 2rem;
+  text-align: center;
+  font-size: 3.5rem;
+  color: white;
+}
+.geo-card .body { padding: 1rem 1.2rem 1.2rem; }
+.geo-card .title {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.6rem;
+  line-height: 1.1;
+}
+.geo-card .region {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.geo-view {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.geo-view .geo-hero {
+  padding: 3rem;
+  text-align: center;
+  font-size: 5rem;
+  color: white;
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+}
+.geo-view h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+}
+
+/* PRONUNCIACION */
+.pron-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+}
+.pron-card {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius-sm);
+  text-align: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: all 0.2s;
+  border: 2px solid transparent;
+}
+.pron-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.pron-card .word {
+  font-family: "Fraunces", serif;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.pron-card .ipa {
+  font-family: "Inter", sans-serif;
+  color: var(--accent-2);
+  font-size: 0.85rem;
+  margin: 0.2rem 0;
+}
+.pron-card .trans {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+.pron-card .speaker {
+  color: var(--accent);
+  font-size: 1.2rem;
+  margin-top: 0.3rem;
+}
+
+/* RECURSOS */
+.resource-section { margin-bottom: 2rem; }
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.resource-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  text-decoration: none;
+  color: var(--ink);
+  display: block;
+}
+.resource-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+.resource-card .channel {
+  font-family: "Caveat", cursive;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 0.3rem;
+}
+.resource-card .level-tag {
+  display: inline-block;
+  background: var(--bg-2);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-right: 0.4rem;
+}
+.tip-box {
+  background: linear-gradient(135deg, var(--accent-4), var(--accent-2));
+  color: white;
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  margin: 1.5rem 0;
+}
+.tip-box .tip-title {
+  font-family: "Caveat", cursive;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+/* BACK BUTTON */
+.back-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent-2);
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+.back-btn:hover { color: var(--accent); }
+
+/* MOBILE */
+@media (max-width: 768px) {
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.4rem; }
+  .hero-quote { padding: 1.5rem; }
+  .hero-quote .quote-en { font-size: 1.3rem; }
+  nav { width: 100%; justify-content: flex-start; overflow-x: auto; }
+  nav button { padding: 0.4rem 0.7rem; font-size: 0.8rem; white-space: nowrap; }
+  main { padding: 1rem; }
+  .lesson-view, .story-view, .geo-view { padding: 1.2rem; }
+  .header-inner { flex-direction: column; align-items: flex-start; }
+}
+
+/* IRREGULAR VERBS */
+.irregular-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+#irregularSearch {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  border: 2px solid var(--accent-2);
+  border-radius: var(--radius-sm);
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  background: var(--card);
+  color: var(--ink);
+  transition: border-color 0.2s;
+}
+#irregularSearch:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+.irregular-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 2px solid var(--accent-2);
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 20px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.filter-btn:hover {
+  background: var(--bg-2);
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.irregular-table-wrap {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  margin-top: 1rem;
+}
+.irregular-table-wrap table {
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+}
+.irregular-table-wrap th {
+  background: var(--accent);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.irregular-table-wrap tr {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.irregular-table-wrap tbody tr:hover {
+  background: var(--bg-2) !important;
+}
+.irregular-table-wrap .star {
+  color: #f5b800;
+  font-size: 0.9rem;
+}
+.irregular-table-wrap .en-form {
+  font-weight: 600;
+  color: var(--accent);
+}
+.irregular-count {
+  text-align: center;
+  padding: 0.8rem;
+  background: var(--bg-2);
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* PRINT */
+@media print {
+  header, nav, .lesson-controls, .back-btn, .doodles-bg { display: none !important; }
+  .lesson-view, .section { box-shadow: none; padding: 0; }
+  body { background: white; }
+}
+</style>
+</head>
+<body>
+<div class="doodles-bg" id="doodlesBg"></div>
+
+<div class="app">
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      📚 FIRST Ready
+      <span class="sub">~ let's go B2! ~</span>
+    </div>
+    <nav id="mainNav">
+      <button data-section="inicio" class="active">🏠 Inicio</button>
+      <button data-section="lecciones">📖 Lecciones</button>
+      <button data-section="irregulares">🔁 Irregulares</button>
+      <button data-section="historias">📚 Historias</button>
+      <button data-section="geografia">🌍 UK</button>
+      <button data-section="pronunciacion">🎤 Pronunciación</button>
+      <button data-section="recursos">🎬 Recursos</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- INICIO -->
+<section id="inicio" class="section active">
+  <h1>¡Hola! 👋</h1>
+  <p class="subtitle">Listo/a para romperla en el First Certificate</p>
+
+  <div class="hero-quote" id="heroQuote">
+    <div class="quote-en" id="quoteEn"></div>
+    <div class="quote-es" id="quoteEs"></div>
+    <div class="quote-author" id="quoteAuthor"></div>
+  </div>
+
+  <div class="progress-grid">
+    <div class="progress-card">
+      <div class="num" id="statLessons">0</div>
+      <div class="label">Lecciones hechas</div>
+    </div>
+    <div class="progress-card">
+      <div class="num" id="statStories">0</div>
+      <div class="label">Historias leídas</div>
+    </div>
+    <div class="progress-card">
+      <div class="num" id="statExercises">0</div>
+      <div class="label">Ejercicios acertados</div>
+    </div>
+    <div class="progress-card">
+      <div class="num" id="statStreak">0</div>
+      <div class="label">Días de racha</div>
+    </div>
+  </div>
+
+  <div class="progress-bar-wrap">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <strong>Tu progreso general</strong>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <h2>Seguí aprendiendo</h2>
+  <div class="quick-access">
+    <div class="quick-card" data-go="lecciones">
+      <span class="emoji">📖</span>
+      <div class="title">Lecciones</div>
+    </div>
+    <div class="quick-card" data-go="historias">
+      <span class="emoji">📚</span>
+      <div class="title">Historias</div>
+    </div>
+    <div class="quick-card" data-go="geografia">
+      <span class="emoji">🏰</span>
+      <div class="title">UK</div>
+    </div>
+    <div class="quick-card" data-go="pronunciacion">
+      <span class="emoji">🎤</span>
+      <div class="title">Pronunciación</div>
+    </div>
+    <div class="quick-card" data-go="recursos">
+      <span class="emoji">🎬</span>
+      <div class="title">Recursos</div>
+    </div>
+  </div>
+</section>
+
+<!-- LECCIONES -->
+<section id="lecciones" class="section">
+  <div id="lessonsIndex">
+    <h1>Lecciones 📖</h1>
+    <p class="subtitle">12 clases con todo lo que entra en el First</p>
+    <div class="lesson-grid" id="lessonGrid"></div>
+  </div>
+  <div id="lessonDetail" style="display:none;"></div>
+</section>
+
+<!-- IRREGULAR VERBS -->
+<section id="irregulares" class="section">
+  <h1>Verbos Irregulares 🔁</h1>
+  <p class="subtitle">Los 80 verbos irregulares esenciales para el First</p>
+  <div class="tip-box">
+    <div class="tip-title">💡 Cómo estudiarlos</div>
+    <p style="margin-bottom:0;">No trates de memorizarlos todos de una. Dividilos en <strong>grupos por patrón</strong>: los que no cambian (cut-cut-cut), los que terminan igual en las tres formas, los que cambian vocal (sing-sang-sung). Tocá cualquier fila para escuchar las tres formas pronunciadas en inglés. Los marcados con ⭐ son los más preguntados en el examen.</p>
+  </div>
+  <div class="irregular-controls">
+    <input type="text" id="irregularSearch" placeholder="🔍 Buscar verbo...">
+    <div class="irregular-filters">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn" data-filter="top">⭐ Más comunes</button>
+      <button class="filter-btn" data-filter="same">Igual 3 formas</button>
+      <button class="filter-btn" data-filter="changing">Con cambio vocal</button>
+    </div>
+  </div>
+  <div id="irregularTable"></div>
+</section>
+
+<!-- HISTORIAS -->
+<section id="historias" class="section">
+  <div id="storiesIndex">
+    <h1>Historias 📚</h1>
+    <p class="subtitle">Tocá las palabras subrayadas para ver la traducción</p>
+    <div class="stories-grid" id="storyGrid"></div>
+  </div>
+  <div id="storyDetail" style="display:none;"></div>
+</section>
+
+<!-- GEOGRAFIA -->
+<section id="geografia" class="section">
+  <div id="geoIndex">
+    <h1>UK por dentro 🌍</h1>
+    <p class="subtitle">Ciudades, regiones y su cultura ~ pasá el mouse sobre las palabras</p>
+    <div class="geo-grid" id="geoGrid"></div>
+  </div>
+  <div id="geoDetail" style="display:none;"></div>
+</section>
+
+<!-- PRONUNCIACION -->
+<section id="pronunciacion" class="section">
+  <h1>Pronunciación 🎤</h1>
+  <p class="subtitle">Tocá cada palabra para escucharla</p>
+  <h2>Palabras clave del First</h2>
+  <div class="pron-grid" id="pronGrid"></div>
+  <h2>Reglas fonéticas importantes</h2>
+  <div id="phoneticsRules"></div>
+</section>
+
+<!-- RECURSOS -->
+<section id="recursos" class="section">
+  <h1>Recursos 🎬</h1>
+  <p class="subtitle">Canales y videos para meterle desde casa</p>
+  <div class="tip-box">
+    <div class="tip-title">💡 Cómo usar estos recursos</div>
+    <p style="margin-bottom:0;">No los veas todos de una. Elegí <strong>1 canal principal</strong> para la gramática y <strong>1 de inmersión</strong> (series, vlogs) para el oído. Dedicale 20-30 min por día, activá subtítulos en inglés primero y en español solo si te perdés mucho. La clave está en la <strong>constancia</strong>, no en la cantidad.</p>
+  </div>
+  <div id="resourcesContent"></div>
+</section>
+
+</main>
+</div>
+
+<div id="tooltip"><div class="tt-word"></div><div class="tt-trans"></div></div>
+
+<script>
+/* ============ DATOS ============ */
+
+var QUOTES = [
+  {en: "The only way to do great work is to love what you do.", es: "La única forma de hacer un gran trabajo es amar lo que hacés.", author: "Steve Jobs"},
+  {en: "Success is not final, failure is not fatal: it is the courage to continue that counts.", es: "El éxito no es definitivo, el fracaso no es fatal: lo que cuenta es el coraje de seguir.", author: "Winston Churchill"},
+  {en: "The future belongs to those who believe in the beauty of their dreams.", es: "El futuro pertenece a los que creen en la belleza de sus sueños.", author: "Eleanor Roosevelt"},
+  {en: "Practice makes perfect.", es: "La práctica hace al maestro.", author: "Proverb"},
+  {en: "A journey of a thousand miles begins with a single step.", es: "Un viaje de mil millas empieza con un solo paso.", author: "Lao Tzu"},
+  {en: "Learning never exhausts the mind.", es: "El aprendizaje nunca agota la mente.", author: "Leonardo da Vinci"},
+  {en: "The beautiful thing about learning is that no one can take it away from you.", es: "Lo lindo de aprender es que nadie te lo puede sacar.", author: "B.B. King"},
+  {en: "You miss 100% of the shots you do not take.", es: "Te perdés el 100% de los tiros que no pateás.", author: "Wayne Gretzky"},
+  {en: "Tough times never last, but tough people do.", es: "Los tiempos duros no duran, pero la gente dura sí.", author: "Robert Schuller"},
+  {en: "Do not watch the clock. Do what it does. Keep going.", es: "No mires el reloj. Hacé lo que él hace: seguir.", author: "Sam Levenson"},
+  {en: "The best way to predict the future is to create it.", es: "La mejor forma de predecir el futuro es crearlo.", author: "Peter Drucker"},
+  {en: "Fall seven times, stand up eight.", es: "Caete siete veces, levantate ocho.", author: "Japanese Proverb"},
+  {en: "Dream big and dare to fail.", es: "Soñá en grande y animate a fallar.", author: "Norman Vaughan"},
+  {en: "It always seems impossible until it is done.", es: "Siempre parece imposible hasta que está hecho.", author: "Nelson Mandela"},
+  {en: "The only limit to our realization of tomorrow is our doubts of today.", es: "El único límite para lograr el mañana son nuestras dudas de hoy.", author: "Franklin D. Roosevelt"}
+];
+
+/* DICCIONARIO de ~700 palabras para tooltips automáticos en Geografía */
+var DICT = {
+  "city":"ciudad","town":"pueblo","village":"aldea","country":"país","capital":"capital",
+  "river":"río","sea":"mar","ocean":"océano","mountain":"montaña","hill":"colina",
+  "valley":"valle","coast":"costa","beach":"playa","island":"isla","bridge":"puente",
+  "castle":"castillo","palace":"palacio","church":"iglesia","cathedral":"catedral","tower":"torre",
+  "building":"edificio","house":"casa","home":"hogar","street":"calle","road":"camino",
+  "square":"plaza","park":"parque","garden":"jardín","museum":"museo","gallery":"galería",
+  "library":"biblioteca","school":"escuela","university":"universidad","hospital":"hospital","shop":"tienda",
+  "market":"mercado","restaurant":"restaurante","pub":"bar","cafe":"cafetería","hotel":"hotel",
+  "station":"estación","airport":"aeropuerto","port":"puerto","harbour":"puerto","harbor":"puerto",
+  "history":"historia","tradition":"tradición","culture":"cultura","food":"comida","drink":"bebida",
+  "breakfast":"desayuno","lunch":"almuerzo","dinner":"cena","tea":"té","coffee":"café",
+  "beer":"cerveza","wine":"vino","meat":"carne","fish":"pescado","bread":"pan",
+  "cheese":"queso","cake":"torta","pie":"empanada","soup":"sopa","salad":"ensalada",
+  "people":"gente","person":"persona","man":"hombre","woman":"mujer","child":"niño",
+  "children":"niños","family":"familia","friend":"amigo","neighbour":"vecino","neighbor":"vecino",
+  "king":"rey","queen":"reina","prince":"príncipe","princess":"princesa","lord":"señor",
+  "lady":"dama","knight":"caballero","soldier":"soldado","writer":"escritor","poet":"poeta",
+  "artist":"artista","singer":"cantante","player":"jugador","student":"estudiante","teacher":"profesor",
+  "old":"viejo","new":"nuevo","ancient":"antiguo","modern":"moderno","famous":"famoso",
+  "beautiful":"hermoso","pretty":"lindo","nice":"lindo","lovely":"encantador","wonderful":"maravilloso",
+  "amazing":"increíble","small":"chico","little":"chiquito","big":"grande","large":"grande",
+  "huge":"enorme","tiny":"diminuto","tall":"alto","short":"bajo","long":"largo",
+  "wide":"ancho","narrow":"angosto","deep":"profundo","high":"alto","low":"bajo",
+  "cold":"frío","hot":"caliente","warm":"cálido","cool":"fresco","wet":"mojado",
+  "dry":"seco","windy":"ventoso","rainy":"lluvioso","sunny":"soleado","cloudy":"nublado",
+  "foggy":"con niebla","snowy":"nevado","weather":"clima","winter":"invierno","summer":"verano",
+  "spring":"primavera","autumn":"otoño","fall":"otoño","season":"estación","year":"año",
+  "month":"mes","week":"semana","day":"día","night":"noche","morning":"mañana",
+  "afternoon":"tarde","evening":"tardecita","today":"hoy","yesterday":"ayer","tomorrow":"mañana",
+  "now":"ahora","later":"después","soon":"pronto","always":"siempre","never":"nunca",
+  "often":"a menudo","sometimes":"a veces","usually":"usualmente","rarely":"raramente","ever":"alguna vez",
+  "before":"antes","after":"después","during":"durante","while":"mientras","until":"hasta",
+  "north":"norte","south":"sur","east":"este","west":"oeste","centre":"centro",
+  "center":"centro","area":"zona","region":"región","part":"parte","place":"lugar",
+  "location":"ubicación","point":"punto","spot":"lugar","site":"sitio","land":"tierra",
+  "earth":"tierra","world":"mundo","nature":"naturaleza","forest":"bosque","tree":"árbol",
+  "flower":"flor","grass":"pasto","sky":"cielo","sun":"sol","moon":"luna",
+  "star":"estrella","cloud":"nube","rain":"lluvia","snow":"nieve","wind":"viento",
+  "fire":"fuego","water":"agua","ice":"hielo","stone":"piedra","rock":"roca",
+  "sand":"arena","wall":"pared","roof":"techo","floor":"piso","ceiling":"cielorraso",
+  "window":"ventana","door":"puerta","gate":"portón","road":"camino","path":"sendero",
+  "walk":"caminar","run":"correr","go":"ir","come":"venir","leave":"irse",
+  "arrive":"llegar","travel":"viajar","visit":"visitar","stay":"quedarse","live":"vivir",
+  "move":"mudarse","return":"volver","get":"conseguir","take":"tomar","bring":"traer",
+  "give":"dar","send":"enviar","receive":"recibir","buy":"comprar","sell":"vender",
+  "pay":"pagar","cost":"costar","spend":"gastar","save":"ahorrar","earn":"ganar",
+  "work":"trabajar","play":"jugar","study":"estudiar","learn":"aprender","teach":"enseñar",
+  "read":"leer","write":"escribir","speak":"hablar","talk":"hablar","say":"decir",
+  "tell":"contar","ask":"preguntar","answer":"responder","listen":"escuchar","hear":"oír",
+  "see":"ver","look":"mirar","watch":"observar","find":"encontrar","lose":"perder",
+  "start":"empezar","begin":"comenzar","finish":"terminar","end":"acabar","stop":"parar",
+  "continue":"continuar","try":"intentar","fail":"fallar","succeed":"tener éxito","win":"ganar",
+  "lose":"perder","like":"gustar","love":"amar","hate":"odiar","enjoy":"disfrutar",
+  "prefer":"preferir","want":"querer","need":"necesitar","wish":"desear","hope":"esperar",
+  "think":"pensar","know":"saber","believe":"creer","remember":"recordar","forget":"olvidar",
+  "understand":"entender","mean":"significar","explain":"explicar","describe":"describir","happen":"pasar",
+  "good":"bueno","bad":"malo","great":"genial","terrible":"terrible","easy":"fácil",
+  "difficult":"difícil","hard":"difícil","simple":"simple","complex":"complejo","interesting":"interesante",
+  "boring":"aburrido","funny":"gracioso","serious":"serio","happy":"feliz","sad":"triste",
+  "angry":"enojado","tired":"cansado","busy":"ocupado","free":"libre","ready":"listo",
+  "important":"importante","necessary":"necesario","possible":"posible","impossible":"imposible","true":"verdadero",
+  "false":"falso","right":"correcto","wrong":"incorrecto","real":"real","fake":"falso",
+  "rich":"rico","poor":"pobre","cheap":"barato","expensive":"caro","clean":"limpio",
+  "dirty":"sucio","safe":"seguro","dangerous":"peligroso","quiet":"silencioso","loud":"ruidoso",
+  "full":"lleno","empty":"vacío","heavy":"pesado","light":"liviano","strong":"fuerte",
+  "weak":"débil","fast":"rápido","slow":"lento","quick":"rápido","late":"tarde",
+  "early":"temprano","many":"muchos","much":"mucho","few":"pocos","little":"poco",
+  "several":"varios","some":"algunos","any":"algún","all":"todo","every":"cada",
+  "each":"cada","both":"ambos","either":"cualquiera","neither":"ninguno","none":"ninguno",
+  "most":"la mayoría","more":"más","less":"menos","enough":"suficiente","too":"demasiado",
+  "very":"muy","quite":"bastante","rather":"bastante","really":"realmente","also":"también",
+  "just":"solo","only":"solamente","even":"incluso","still":"todavía","yet":"aún",
+  "already":"ya","almost":"casi","nearly":"casi","about":"sobre","around":"alrededor",
+  "between":"entre","among":"entre","through":"a través","across":"a través","along":"a lo largo",
+  "round":"alrededor","near":"cerca","far":"lejos","next":"siguiente","last":"último",
+  "first":"primero","second":"segundo","third":"tercero","previous":"previo","final":"final",
+  "main":"principal","local":"local","national":"nacional","international":"internacional","global":"global",
+  "public":"público","private":"privado","common":"común","special":"especial","usual":"habitual",
+  "different":"diferente","similar":"similar","same":"igual","other":"otro","another":"otro",
+  "own":"propio","personal":"personal","human":"humano","social":"social","political":"político",
+  "economic":"económico","financial":"financiero","business":"negocio","industry":"industria","company":"empresa",
+  "government":"gobierno","law":"ley","police":"policía","army":"ejército","war":"guerra",
+  "peace":"paz","fight":"pelea","battle":"batalla","victory":"victoria","defeat":"derrota",
+  "power":"poder","control":"control","rule":"regla","order":"orden","system":"sistema",
+  "kingdom":"reino","empire":"imperio","nation":"nación","state":"estado","county":"condado",
+  "territory":"territorio","border":"frontera","invasion":"invasión","conquest":"conquista","independence":"independencia",
+  "freedom":"libertad","right":"derecho","duty":"deber","law":"ley","rule":"regla",
+  "century":"siglo","decade":"década","period":"período","age":"era","era":"era",
+  "event":"evento","moment":"momento","time":"tiempo","past":"pasado","present":"presente",
+  "future":"futuro","legend":"leyenda","myth":"mito","story":"historia","tale":"cuento",
+  "poem":"poema","novel":"novela","book":"libro","song":"canción","music":"música",
+  "dance":"baile","film":"película","movie":"película","show":"show","series":"serie",
+  "art":"arte","painting":"pintura","sculpture":"escultura","design":"diseño","style":"estilo",
+  "fashion":"moda","clothes":"ropa","dress":"vestido","shirt":"camisa","shoes":"zapatos",
+  "hat":"sombrero","bag":"bolso","money":"dinero","price":"precio","value":"valor",
+  "number":"número","count":"contar","amount":"cantidad","size":"tamaño","weight":"peso",
+  "height":"altura","length":"largo","width":"ancho","depth":"profundidad","distance":"distancia",
+  "speed":"velocidad","temperature":"temperatura","degree":"grado","million":"millón","billion":"mil millones",
+  "thousand":"mil","hundred":"cien","population":"población","inhabitant":"habitante","resident":"residente",
+  "citizen":"ciudadano","tourist":"turista","visitor":"visitante","guest":"invitado","host":"anfitrión",
+  "language":"idioma","word":"palabra","phrase":"frase","sentence":"oración","meaning":"significado",
+  "accent":"acento","dialect":"dialecto","voice":"voz","sound":"sonido","noise":"ruido",
+  "silence":"silencio","music":"música","rhythm":"ritmo","tune":"melodía","festival":"festival",
+  "celebration":"celebración","party":"fiesta","holiday":"feriado","vacation":"vacaciones","trip":"viaje",
+  "tour":"recorrido","journey":"viaje","adventure":"aventura","experience":"experiencia","memory":"recuerdo",
+  "symbol":"símbolo","flag":"bandera","emblem":"emblema","monument":"monumento","statue":"estatua",
+  "landmark":"hito","view":"vista","scene":"escena","image":"imagen","picture":"cuadro",
+  "photo":"foto","portrait":"retrato","landscape":"paisaje","scenery":"escenario","atmosphere":"atmósfera",
+  "spirit":"espíritu","mood":"humor","feeling":"sentimiento","emotion":"emoción","passion":"pasión",
+  "pride":"orgullo","honour":"honor","honor":"honor","respect":"respeto","admire":"admirar",
+  "discover":"descubrir","explore":"explorar","develop":"desarrollar","build":"construir","create":"crear",
+  "design":"diseñar","produce":"producir","grow":"crecer","raise":"criar","feed":"alimentar",
+  "cook":"cocinar","bake":"hornear","fry":"freír","boil":"hervir","serve":"servir",
+  "eat":"comer","drink":"beber","taste":"probar","smell":"oler","touch":"tocar",
+  "wear":"usar","put":"poner","keep":"guardar","hold":"sostener","catch":"atrapar",
+  "throw":"tirar","push":"empujar","pull":"tirar","open":"abrir","close":"cerrar",
+  "meet":"conocer","join":"unirse","share":"compartir","help":"ayudar","thank":"agradecer",
+  "invite":"invitar","welcome":"dar la bienvenida","greet":"saludar","wave":"saludar","smile":"sonreír",
+  "laugh":"reír","cry":"llorar","scream":"gritar","whisper":"susurrar","sing":"cantar",
+  "coast":"costa","cliff":"acantilado","lake":"lago","pond":"estanque","stream":"arroyo",
+  "waterfall":"cascada","meadow":"prado","field":"campo","farm":"granja","countryside":"campo",
+  "urban":"urbano","rural":"rural","medieval":"medieval","victorian":"victoriano","gothic":"gótico",
+  "roman":"romano","celtic":"celta","saxon":"sajón","norman":"normando","british":"británico",
+  "english":"inglés","welsh":"galés","scottish":"escocés","irish":"irlandés","european":"europeo",
+  "wooden":"de madera","stone":"de piedra","brick":"de ladrillo","iron":"de hierro","gold":"de oro",
+  "silver":"de plata","glass":"de vidrio","paper":"papel","famous":"famoso","unique":"único"
+};
+
+/* LECCIONES */
+var LESSONS = [
+  {
+    id: 1,
+    title: "Los 12 tiempos verbales del inglés",
+    desc: "Todos los tiempos conjugados con to work y to go",
+    emoji: "⏰",
+    theory: "<p>Antes de meternos con los tiempos, necesitás tener a mano los <b>pronombres personales</b> y cómo cambian los verbos según la persona. Acá va la tabla madre:</p><table class='inline-table'><thead><tr><th>Sujeto</th><th>Objeto</th><th>Posesivo (adj.)</th><th>Posesivo (pron.)</th><th>Reflexivo</th></tr></thead><tbody><tr><td><b>I</b> (yo)</td><td>me</td><td>my</td><td>mine</td><td>myself</td></tr><tr><td><b>you</b> (vos/tú)</td><td>you</td><td>your</td><td>yours</td><td>yourself</td></tr><tr><td><b>he</b> (él)</td><td>him</td><td>his</td><td>his</td><td>himself</td></tr><tr><td><b>she</b> (ella)</td><td>her</td><td>her</td><td>hers</td><td>herself</td></tr><tr><td><b>it</b> (eso)</td><td>it</td><td>its</td><td>—</td><td>itself</td></tr><tr><td><b>we</b> (nosotros)</td><td>us</td><td>our</td><td>ours</td><td>ourselves</td></tr><tr><td><b>you</b> (ustedes)</td><td>you</td><td>your</td><td>yours</td><td>yourselves</td></tr><tr><td><b>they</b> (ellos)</td><td>them</td><td>their</td><td>theirs</td><td>themselves</td></tr></tbody></table><p>Ejemplo para ver la diferencia: <i>I gave <b>her</b> <b>my</b> book because <b>hers</b> was broken; she read it <b>herself</b>.</i> (Le di <b>a ella</b> <b>mi</b> libro porque <b>el de ella</b> estaba roto; lo leyó <b>ella misma</b>.)</p><h3 style='margin-top:1.5rem'>Conjugación del verbo <i>to be</i> (presente y pasado)</h3><table class='inline-table'><thead><tr><th>Pronombre</th><th>Present (am/is/are)</th><th>Past (was/were)</th><th>Contracción</th></tr></thead><tbody><tr><td>I</td><td>am</td><td>was</td><td>I'm / I was</td></tr><tr><td>you</td><td>are</td><td>were</td><td>you're / you were</td></tr><tr><td>he/she/it</td><td>is</td><td>was</td><td>he's / he was</td></tr><tr><td>we</td><td>are</td><td>were</td><td>we're / we were</td></tr><tr><td>they</td><td>are</td><td>were</td><td>they're / they were</td></tr></tbody></table><h3 style='margin-top:1.5rem'>Conjugación del verbo <i>to have</i> (presente y pasado)</h3><table class='inline-table'><thead><tr><th>Pronombre</th><th>Present</th><th>Past</th><th>Contracción</th></tr></thead><tbody><tr><td>I / you / we / they</td><td>have</td><td>had</td><td>I've / you've...</td></tr><tr><td>he / she / it</td><td>has</td><td>had</td><td>he's / she's...</td></tr></tbody></table><p><b>¡Ojo!</b> La contracción <i>'s</i> puede ser <b>is</b> o <b>has</b>: <i>She's tired</i> (is) vs <i>She's finished</i> (has). Se distingue por el verbo que sigue.</p><h3 style='margin-top:1.5rem'>Conjugación de un verbo regular (<i>to work</i>) en presente</h3><table class='inline-table'><thead><tr><th>Pronombre</th><th>Afirmativo</th><th>Negativo</th><th>Pregunta</th></tr></thead><tbody><tr><td>I / you / we / they</td><td>work</td><td>don't work</td><td>Do you work?</td></tr><tr><td>he / she / it</td><td><b>works</b></td><td><b>doesn't</b> work</td><td><b>Does</b> he work?</td></tr></tbody></table><p>La única diferencia en Present Simple es la <b>-s</b> de la tercera persona del singular (he/she/it). Las terminaciones especiales: verbos que terminan en <i>-s, -sh, -ch, -x, -o</i> agregan <b>-es</b> (she watch<b>es</b>, he go<b>es</b>); los que terminan en consonante + y cambian y por <b>-ies</b> (he stud<b>ies</b>).</p><h3 style='margin-top:1.5rem'>Los 12 tiempos verbales</h3><p>El inglés tiene <b>12 tiempos verbales</b> que resultan de combinar 3 tiempos (present, past, future) con 4 aspectos (simple, continuous, perfect, perfect continuous). Acá te los muestro todos conjugados con un <b>verbo regular (to work)</b> y uno <b>irregular (to go)</b>. Los más importantes para el First son Present Simple, Present Continuous, Present Perfect, Past Simple, Past Continuous, Past Perfect, Future Simple y Future Continuous. Fijate especialmente en la <b>diferencia Past Simple vs Present Perfect</b>, que es la pregunta fija del examen.",
+    audioText: "El inglés tiene doce tiempos verbales. Se forman combinando presente, pasado y futuro con cuatro aspectos: simple, continuo, perfecto y perfecto continuo. Los más importantes para el First son Present Simple, Present Continuous, Present Perfect, Past Simple, Past Continuous, Past Perfect y Future Simple.",
+    audioTextEn: "English has twelve verb tenses. They are formed by combining present, past and future with four aspects: simple, continuous, perfect and perfect continuous. The most important ones for the First are Present Simple, Present Continuous, Present Perfect, Past Simple, Past Continuous, Past Perfect and Future Simple.",
+    table: {
+      headers: ["Tiempo verbal", "to work (regular)", "to go (irregular)", "Cuándo usarlo"],
+      rows: [
+        ["Present Simple", "I work / she works", "I go / she goes", "Rutinas, hechos generales"],
+        ["Present Continuous", "I am working", "I am going", "Ahora, temporal, plan futuro"],
+        ["Present Perfect", "I have worked", "I have gone", "Pasado con conexión al presente"],
+        ["Present Perfect Cont.", "I have been working", "I have been going", "Acción que empezó y sigue"],
+        ["Past Simple", "I worked", "I went", "Pasado terminado, tiempo específico"],
+        ["Past Continuous", "I was working", "I was going", "En proceso en un momento del pasado"],
+        ["Past Perfect", "I had worked", "I had gone", "Pasado anterior a otro pasado"],
+        ["Past Perfect Cont.", "I had been working", "I had been going", "Duración antes de otro pasado"],
+        ["Future Simple", "I will work", "I will go", "Predicción, decisión espontánea"],
+        ["Future Continuous", "I will be working", "I will be going", "En proceso en el futuro"],
+        ["Future Perfect", "I will have worked", "I will have gone", "Terminado antes de un futuro"],
+        ["Future Perfect Cont.", "I will have been working", "I will have been going", "Duración hasta un futuro"]
+      ]
+    },
+    examples: [
+      {en: "I work in logistics and I'm working on a big project this month.", es: "Trabajo en logística y estoy trabajando en un proyecto grande este mes. (Present Simple + Present Continuous)"},
+      {en: "I have lived in Montevideo for ten years. I lived in Canelones before.", es: "Vivo en Montevideo hace diez años. Antes vivía en Canelones. (Present Perfect + Past Simple)"},
+      {en: "When she arrived, I had already finished dinner.", es: "Cuando llegó, yo ya había terminado de cenar. (Past Simple + Past Perfect)"},
+      {en: "By next June, I will have been studying English for two years.", es: "Para junio del año que viene, voy a haber estudiado inglés dos años. (Future Perfect Continuous)"}
+    ],
+    exercises: [
+      {type: "mc", q: "Choose: I ___ to Paris three times in my life.", options: ["went", "have been", "was going"], answer: 1, fb: "Experiencia de vida sin tiempo específico = Present Perfect"},
+      {type: "mc", q: "Choose: She ___ her keys yesterday.", options: ["has lost", "lost", "has been losing"], answer: 1, fb: "Yesterday = momento específico = Past Simple"},
+      {type: "fill", q: "Completá: I ___ (not see) that film yet.", answer: "haven't seen", fb: "Con 'yet' va Present Perfect negativo"},
+      {type: "mc", q: "When I called her, she ___ dinner.", options: ["cooked", "was cooking", "has cooked"], answer: 1, fb: "Acción en proceso en un momento del pasado = Past Continuous"},
+      {type: "fill", q: "Completá: By 2030, I ___ (finish) my degree.", answer: "will have finished", fb: "Acción terminada antes de un momento futuro = Future Perfect"},
+      {type: "mc", q: "They ___ at this company since 2015.", options: ["work", "are working", "have been working"], answer: 2, fb: "Acción que empezó en el pasado y sigue con duración = Present Perfect Continuous"},
+      {type: "fill", q: "Completá: When I arrived, the meeting ___ (already/start).", answer: "had already started", fb: "Pasado anterior a otro pasado = Past Perfect"}
+    ]
+  },
+  {
+    id: 2,
+    title: "Conditionals (0, 1, 2, 3)",
+    desc: "Las cuatro condicionales del First sin drama",
+    emoji: "🔮",
+    theory: "Los <b>condicionales</b> expresan situaciones hipotéticas o reales con distintos grados de probabilidad. El <b>Zero</b> es para verdades generales, el <b>First</b> para situaciones reales futuras, el <b>Second</b> para situaciones irreales del presente, y el <b>Third</b> para situaciones irreales del pasado.",
+    audioText: "El condicional cero es para verdades generales, como 'si calentás agua a cien grados, hierve'. El primer condicional es para situaciones reales futuras. El segundo es para situaciones hipotéticas del presente. El tercero es para situaciones imposibles del pasado.",
+    audioTextEn: "The zero conditional is for general truths, like 'if you heat water to 100 degrees, it boils'. The first conditional is for real future situations. The second is for hypothetical present situations. The third is for impossible past situations.",
+    table: {
+      headers: ["Tipo", "Estructura", "Ejemplo"],
+      rows: [
+        ["0 - Verdad", "If + present, present", "If you heat ice, it melts"],
+        ["1 - Real futuro", "If + present, will + inf", "If it rains, I will stay"],
+        ["2 - Irreal presente", "If + past, would + inf", "If I had money, I would travel"],
+        ["3 - Irreal pasado", "If + past perfect, would have + part.", "If I had studied, I would have passed"]
+      ]
+    },
+    examples: [
+      {en: "If you mix blue and yellow, you get green.", es: "Si mezclás azul y amarillo, da verde. (verdad)"},
+      {en: "If I finish early, I will call you.", es: "Si termino temprano, te llamo. (real)"},
+      {en: "If I were you, I would take the job.", es: "Si fuera vos, aceptaría el trabajo. (hipotético)"},
+      {en: "If she had studied, she would have passed.", es: "Si hubiera estudiado, habría aprobado. (imposible)"}
+    ],
+    exercises: [
+      {type: "mc", q: "If it ___ tomorrow, we will cancel the picnic.", options: ["rains", "will rain", "rained"], answer: 0, fb: "First conditional: if + present simple"},
+      {type: "mc", q: "If I ___ rich, I would buy a house in London.", options: ["am", "was", "were"], answer: 2, fb: "Second conditional usa 'were' para todas las personas en inglés formal"},
+      {type: "fill", q: "Completá: If she ___ (tell) me, I would have helped her.", answer: "had told", fb: "Third conditional: if + past perfect"},
+      {type: "mc", q: "If you heat water, it ___.", options: ["will boil", "boils", "would boil"], answer: 1, fb: "Zero conditional para hechos generales"},
+      {type: "fill", q: "Completá: If I ___ (have) more time, I would travel more.", answer: "had", fb: "Second conditional: if + past simple"}
+    ]
+  },
+  {
+    id: 3,
+    title: "Passive Voice",
+    desc: "Hacé que el objeto sea la estrella",
+    emoji: "🎭",
+    theory: "La <b>voz pasiva</b> se usa cuando el objeto de la acción es más importante que quien la realiza, o cuando el agente es desconocido u obvio. Se forma con el verbo <b>to be</b> + participio pasado. En el First aparece mucho en textos formales y noticias.",
+    audioText: "La voz pasiva se forma con el verbo to be conjugado más el participio pasado del verbo principal. Se usa cuando queremos enfatizar la acción o el objeto, no quien hace la acción.",
+    audioTextEn: "The passive voice is formed with the verb to be conjugated plus the past participle of the main verb. We use it when we want to emphasize the action or the object, not who does the action.",
+    table: {
+      headers: ["Tiempo", "Activa", "Pasiva"],
+      rows: [
+        ["Present", "They build houses", "Houses are built"],
+        ["Past", "They built houses", "Houses were built"],
+        ["Pres. Perfect", "They have built houses", "Houses have been built"],
+        ["Future", "They will build houses", "Houses will be built"],
+        ["Modal", "They can build houses", "Houses can be built"]
+      ]
+    },
+    examples: [
+      {en: "The letter was written by Anna.", es: "La carta fue escrita por Anna."},
+      {en: "English is spoken all over the world.", es: "El inglés se habla en todo el mundo."},
+      {en: "The bridge is being repaired this week.", es: "El puente está siendo reparado esta semana."},
+      {en: "My car has been stolen!", es: "¡Me robaron el auto!"}
+    ],
+    exercises: [
+      {type: "mc", q: "The cake ___ by my grandma.", options: ["was made", "made", "has make"], answer: 0, fb: "Pasiva pasada: was/were + participio"},
+      {type: "fill", q: "Pasá a pasiva: They clean the office every day → The office ___ every day.", answer: "is cleaned", fb: "Presente simple pasivo: is/are + participio"},
+      {type: "mc", q: "The new law ___ next month.", options: ["will introduced", "will be introduced", "is introducing"], answer: 1, fb: "Futuro pasivo: will be + participio"},
+      {type: "fill", q: "Pasá a pasiva: Shakespeare wrote Hamlet → Hamlet ___ by Shakespeare.", answer: "was written", fb: "Pasado pasivo + by para el agente"},
+      {type: "mc", q: "This song ___ by millions of people.", options: ["has listened", "has been listened to", "is listen"], answer: 1, fb: "Present Perfect pasivo: has been + participio, ojo con 'to'"}
+    ]
+  },
+  {
+    id: 4,
+    title: "Modal Verbs",
+    desc: "Can, could, should, must, might y cuándo usarlos",
+    emoji: "🎯",
+    theory: "Los <b>modales</b> expresan posibilidad, obligación, consejo, permiso y deducción. No tienen -s en la tercera persona, no llevan 'to' antes del infinitivo, y forman negativos y preguntas sin auxiliar. En el First caen pregunta fija sobre deducción con <b>must/might/can't</b>.",
+    audioText: "Los verbos modales son can, could, may, might, must, should, will y would. No cambian en la tercera persona y van seguidos de infinitivo sin to. Expresan posibilidad, obligación, consejo y deducción.",
+    audioTextEn: "Modal verbs are can, could, may, might, must, should, will, and would. They do not change in the third person and are followed by the infinitive without to. They express possibility, obligation, advice, and deduction.",
+    table: {
+      headers: ["Modal", "Uso", "Ejemplo"],
+      rows: [
+        ["can / could", "Habilidad / posibilidad", "I can swim"],
+        ["must", "Obligación fuerte / deducción segura", "You must study"],
+        ["should", "Consejo", "You should rest"],
+        ["might / may", "Posibilidad baja", "It might rain"],
+        ["have to", "Obligación externa", "I have to work"],
+        ["can't", "Imposibilidad / prohibición", "That can't be true"]
+      ]
+    },
+    examples: [
+      {en: "You must wear a helmet on the bike.", es: "Tenés que usar casco en la bici."},
+      {en: "She might come later, I'm not sure.", es: "Capaz viene después, no estoy seguro."},
+      {en: "You should drink more water.", es: "Deberías tomar más agua."},
+      {en: "That can't be John, he's in Spain.", es: "Ese no puede ser John, está en España."}
+    ],
+    exercises: [
+      {type: "mc", q: "You look tired. You ___ go to bed.", options: ["must", "should", "can"], answer: 1, fb: "Should = consejo"},
+      {type: "mc", q: "It's only 2 PM, he ___ be sleeping.", options: ["can't", "must", "should"], answer: 0, fb: "Can't = deducción negativa, imposible"},
+      {type: "fill", q: "Completá: You ___ (not have to) wear a tie here.", answer: "don't have to", fb: "Don't have to = no es obligatorio"},
+      {type: "mc", q: "I'm not sure. It ___ be true.", options: ["must", "might", "can"], answer: 1, fb: "Might = posibilidad incierta"},
+      {type: "mc", q: "Students ___ use phones in class.", options: ["mustn't", "don't must", "can to"], answer: 0, fb: "Mustn't = prohibición"}
+    ]
+  },
+  {
+    id: 5,
+    title: "Reported Speech",
+    desc: "Cuando alguien dijo algo y vos lo contás",
+    emoji: "💬",
+    theory: "El <b>estilo indirecto</b> se usa para contar lo que alguien dijo sin repetir sus palabras exactas. Los tiempos verbales se 'corren' un paso al pasado, los pronombres cambian según el contexto, y las expresiones de tiempo y lugar se ajustan. En el First hay un ejercicio fijo de key word transformation con esto.",
+    audioText: "Cuando pasás de estilo directo a indirecto, el tiempo verbal cambia: present simple pasa a past simple, present continuous a past continuous, past simple a past perfect, y will cambia a would. También cambian palabras como today por that day, tomorrow por the next day.",
+    audioTextEn: "When you change from direct to reported speech, the verb tense changes: present simple becomes past simple, present continuous becomes past continuous, past simple becomes past perfect, and will changes to would. Words like today become that day, and tomorrow becomes the next day.",
+    table: {
+      headers: ["Directo", "Indirecto"],
+      rows: [
+        ["I am happy", "He said he was happy"],
+        ["I will call you", "She said she would call me"],
+        ["I have finished", "He said he had finished"],
+        ["today", "that day"],
+        ["tomorrow", "the next day / the following day"],
+        ["yesterday", "the day before / the previous day"]
+      ]
+    },
+    examples: [
+      {en: "He said he was tired.", es: "Dijo que estaba cansado."},
+      {en: "She told me she would come.", es: "Me dijo que vendría."},
+      {en: "They said they had finished.", es: "Dijeron que habían terminado."},
+      {en: "He asked me where I lived.", es: "Me preguntó dónde vivía."}
+    ],
+    exercises: [
+      {type: "mc", q: "She said 'I am tired' → She said she ___ tired.", options: ["is", "was", "has been"], answer: 1, fb: "Present → Past"},
+      {type: "fill", q: "He said 'I will help you' → He said he ___ help me.", answer: "would", fb: "Will → Would"},
+      {type: "mc", q: "Tom said 'I saw her yesterday' → Tom said he ___ her the day before.", options: ["saw", "had seen", "has seen"], answer: 1, fb: "Past Simple → Past Perfect"},
+      {type: "fill", q: "She asked 'Where do you live?' → She asked where I ___.", answer: "lived", fb: "Preguntas: orden afirmativo + cambio de tiempo"},
+      {type: "mc", q: "He said 'I can swim' → He said he ___ swim.", options: ["can", "could", "would can"], answer: 1, fb: "Can → Could"}
+    ]
+  },
+  {
+    id: 6,
+    title: "Relative Clauses",
+    desc: "Who, which, that, whose ~ conectando frases",
+    emoji: "🔗",
+    theory: "Las <b>oraciones de relativo</b> dan información extra sobre un sustantivo. <b>Who</b> para personas, <b>which</b> para cosas, <b>that</b> para ambos (solo en cláusulas defining), <b>whose</b> para posesión, <b>where</b> para lugares, <b>when</b> para tiempos. Hay dos tipos: <b>defining</b> (sin comas, información esencial) y <b>non-defining</b> (con comas, información extra).",
+    audioText: "Las cláusulas relativas conectan dos oraciones usando pronombres como who, which, that, whose, where y when. Las defining no llevan comas y dan información esencial. Las non-defining llevan comas y dan información extra que se podría omitir.",
+    audioTextEn: "Relative clauses connect two sentences using pronouns like who, which, that, whose, where, and when. Defining clauses have no commas and give essential information. Non-defining clauses have commas and give extra information that could be omitted.",
+    table: {
+      headers: ["Pronombre", "Se refiere a", "Ejemplo"],
+      rows: [
+        ["who", "personas", "The man who called is my dad"],
+        ["which", "cosas/animales", "The book which I bought is great"],
+        ["that", "personas o cosas (defining)", "The car that I want is red"],
+        ["whose", "posesión", "The girl whose dog barked"],
+        ["where", "lugares", "The city where I was born"],
+        ["when", "tiempos", "The day when we met"]
+      ]
+    },
+    examples: [
+      {en: "The woman who lives next door is a doctor.", es: "La mujer que vive al lado es doctora."},
+      {en: "My phone, which is new, stopped working.", es: "Mi teléfono, que es nuevo, dejó de funcionar."},
+      {en: "That's the boy whose father is famous.", es: "Ese es el chico cuyo padre es famoso."},
+      {en: "London is the city where I grew up.", es: "Londres es la ciudad donde me crié."}
+    ],
+    exercises: [
+      {type: "mc", q: "The girl ___ won the race is my sister.", options: ["which", "who", "whose"], answer: 1, fb: "Who para personas"},
+      {type: "fill", q: "Completá: That's the house ___ Shakespeare was born.", answer: "where", fb: "Where para lugares"},
+      {type: "mc", q: "I have a friend ___ brother plays football.", options: ["who", "whose", "which"], answer: 1, fb: "Whose indica posesión"},
+      {type: "mc", q: "The book ___ I am reading is very interesting.", options: ["who", "which", "whose"], answer: 1, fb: "Which para cosas"},
+      {type: "fill", q: "Completá: The day ___ we met was sunny.", answer: "when", fb: "When para tiempos"}
+    ]
+  },
+  {
+    id: 7,
+    title: "Phrasal Verbs del First (+100)",
+    desc: "Agrupados por verbo base: get, take, put, come, go...",
+    emoji: "🧩",
+    theory: "Los <b>phrasal verbs</b> son combinaciones de verbo + partícula que cambian totalmente el significado del verbo original. La mejor estrategia para aprenderlos es agruparlos por <b>verbo base</b>: cuando dominás los patrones de 'get', 'take', 'put', etc., podés deducir muchos por contexto. Abajo tenés más de 100 phrasal verbs de nivel B2 agrupados. Los más preguntados en el First son los de <i>get, take, put, come, go, look y make</i>. Recordá que los <b>separables</b> permiten objeto en el medio (turn it off) y los <b>inseparables</b> no (look after her, nunca 'look her after').",
+    audioText: "Los phrasal verbs son combinaciones de verbo más partícula. La mejor manera de aprenderlos es agrupándolos por verbo base. Los más importantes para el First son los formados con get, take, put, come, go, look y make.",
+    audioTextEn: "Phrasal verbs are combinations of verb plus particle. The best way to learn them is by grouping them by base verb. The most important ones for the First are those formed with get, take, put, come, go, look and make.",
+    table: {
+      headers: ["Phrasal verb", "Significado", "Ejemplo"],
+      rows: [
+        ["— GET —", "", ""],
+        ["get up", "levantarse de la cama", "I get up at 7am"],
+        ["get on with", "llevarse bien con", "I get on with my boss"],
+        ["get over", "superar algo (enfermedad, ruptura)", "She got over the flu"],
+        ["get along with", "llevarse bien (sinónimo US)", "We get along fine"],
+        ["get away with", "salirse con la suya", "He got away with cheating"],
+        ["get back", "volver", "I got back at midnight"],
+        ["get by", "arreglárselas / sobrevivir", "We get by on little money"],
+        ["get through", "terminar / comunicarse", "I got through the book"],
+        ["get rid of", "deshacerse de", "Get rid of those old shoes"],
+        ["get into", "meterse en / empezar a gustar", "I got into yoga last year"],
+        ["— TAKE —", "", ""],
+        ["take after", "parecerse a (familia)", "She takes after her mum"],
+        ["take off", "despegar / sacarse (ropa)", "The plane took off late"],
+        ["take up", "empezar un hobby", "I took up tennis"],
+        ["take over", "hacerse cargo", "She took over the business"],
+        ["take in", "entender / absorber / alojar", "I took in all the info"],
+        ["take back", "retirar lo dicho / devolver", "Take back what you said"],
+        ["take on", "aceptar responsabilidad", "Don't take on too much work"],
+        ["take out", "sacar / invitar a salir", "He took her out for dinner"],
+        ["take down", "desarmar / anotar", "Take down these notes"],
+        ["— PUT —", "", ""],
+        ["put off", "posponer / desanimar", "Let's put off the meeting"],
+        ["put up with", "tolerar, aguantar", "I can't put up with him"],
+        ["put on", "ponerse (ropa) / engordar", "Put on a jacket"],
+        ["put out", "apagar (fuego, luz)", "Put out the cigarette"],
+        ["put away", "guardar", "Put away your toys"],
+        ["put through", "comunicar por teléfono", "I'll put you through"],
+        ["put up", "alojar / construir", "Can you put me up tonight?"],
+        ["put down", "apoyar / humillar", "Don't put her down"],
+        ["put forward", "proponer una idea", "He put forward a plan"],
+        ["— COME —", "", ""],
+        ["come up with", "tener una idea", "She came up with a plan"],
+        ["come across", "encontrarse por casualidad", "I came across an old letter"],
+        ["come back", "volver", "Come back soon"],
+        ["come down with", "enfermarse con", "I came down with the flu"],
+        ["come up", "surgir (tema, problema)", "Something came up at work"],
+        ["come on", "¡dale! / progresar", "Come on, we're late!"],
+        ["come out", "salir (sol, libro, verdad)", "The book comes out in May"],
+        ["come round", "visitar / recobrar conciencia", "Come round for tea"],
+        ["come to", "llegar a (total, conclusión)", "The bill came to 50 euros"],
+        ["— GO —", "", ""],
+        ["go on", "continuar / pasar", "What's going on?"],
+        ["go off", "explotar / sonar alarma / estropearse", "The milk went off"],
+        ["go through", "pasar por / revisar", "She went through hard times"],
+        ["go over", "repasar", "Let's go over the lesson"],
+        ["go out", "salir (socialmente)", "We went out last night"],
+        ["go back", "volver", "I need to go back home"],
+        ["go away", "irse / desaparecer", "Go away, I'm busy"],
+        ["go ahead", "seguir adelante / proceder", "Go ahead, I'm listening"],
+        ["go down with", "enfermarse (UK)", "He went down with a cold"],
+        ["— LOOK —", "", ""],
+        ["look after", "cuidar", "She looks after her kids"],
+        ["look for", "buscar", "I'm looking for my keys"],
+        ["look forward to", "estar ansioso por", "I look forward to meeting you"],
+        ["look up", "buscar info / mejorar situación", "Look up this word"],
+        ["look into", "investigar", "We'll look into the matter"],
+        ["look down on", "mirar con desprecio", "Don't look down on people"],
+        ["look up to", "admirar", "I look up to my grandma"],
+        ["look out", "tener cuidado", "Look out! A car!"],
+        ["look over", "revisar rápido", "Look over this report"],
+        ["— MAKE —", "", ""],
+        ["make up", "inventar / reconciliarse / maquillarse", "They made up after the fight"],
+        ["make up for", "compensar", "I'll make up for the lost time"],
+        ["make out", "distinguir / entender", "I can't make out his writing"],
+        ["make off with", "escaparse con algo", "The thief made off with the cash"],
+        ["make do with", "arreglárselas con", "We'll make do with what we have"],
+        ["make over", "transformar", "She made over the house"],
+        ["— BREAK —", "", ""],
+        ["break down", "romperse (máquina) / colapsar", "The car broke down"],
+        ["break up", "separarse (pareja) / disolver", "They broke up last month"],
+        ["break in", "entrar a la fuerza", "Someone broke in last night"],
+        ["break out", "escapar / estallar (guerra)", "War broke out in 1939"],
+        ["break off", "interrumpir / terminar relación", "They broke off negotiations"],
+        ["break into", "entrar a robar / largarse a", "She broke into tears"],
+        ["— TURN —", "", ""],
+        ["turn on/off", "prender / apagar", "Turn off the TV"],
+        ["turn up", "aparecer / subir volumen", "She turned up late"],
+        ["turn down", "rechazar / bajar volumen", "He turned down the job"],
+        ["turn into", "transformarse en", "The caterpillar turned into a butterfly"],
+        ["turn out", "resultar ser", "It turned out to be fake"],
+        ["turn over", "dar vuelta / entregar", "Turn over the page"],
+        ["— BRING —", "", ""],
+        ["bring up", "criar / mencionar tema", "She was brought up in Spain"],
+        ["bring about", "causar", "The storm brought about chaos"],
+        ["bring back", "devolver / traer de vuelta", "Bring back my book"],
+        ["bring in", "introducir / generar ingresos", "They brought in a new law"],
+        ["bring on", "provocar (algo negativo)", "Stress brought on the illness"],
+        ["— CALL —", "", ""],
+        ["call off", "cancelar", "They called off the wedding"],
+        ["call back", "llamar de vuelta", "I'll call you back"],
+        ["call on", "pedirle a alguien / visitar", "I'll call on you tomorrow"],
+        ["call for", "requerir / pedir", "This calls for a celebration"],
+        ["— GIVE —", "", ""],
+        ["give up", "rendirse / dejar", "I gave up smoking"],
+        ["give away", "regalar / revelar secreto", "She gave away her old clothes"],
+        ["give back", "devolver", "Give me back my pen"],
+        ["give in", "ceder / rendirse", "Don't give in to pressure"],
+        ["give out", "repartir / agotarse", "My strength gave out"],
+        ["— RUN / SET / WORK —", "", ""],
+        ["run out of", "quedarse sin", "We ran out of milk"],
+        ["run into", "encontrarse por casualidad con alguien", "I ran into Maria yesterday"],
+        ["run over", "atropellar", "A car ran over the dog"],
+        ["set up", "organizar / instalar", "Set up the meeting"],
+        ["set off", "partir (viaje) / detonar", "We set off at dawn"],
+        ["set aside", "reservar / apartar", "Set aside some money"],
+        ["work out", "ejercitarse / resolver / funcionar", "It worked out fine"],
+        ["work on", "trabajar en algo", "I'm working on my English"],
+        ["— OTROS CLAVE —", "", ""],
+        ["find out", "enterarse de", "I found out the truth"],
+        ["figure out", "descifrar, entender", "I can't figure this out"],
+        ["carry on", "continuar", "Carry on with your work"],
+        ["point out", "señalar / aclarar", "She pointed out the error"],
+        ["drop off", "dejar algo/alguien / dormirse", "Drop me off at the station"],
+        ["pick up", "recoger / aprender", "I picked up Spanish quickly"],
+        ["hang out", "pasar el rato", "We hung out all afternoon"],
+        ["hang on", "esperar (informal)", "Hang on a second"],
+        ["pass away", "fallecer (formal/eufemismo)", "His grandfather passed away"],
+        ["pass out", "desmayarse", "She passed out from the heat"]
+      ]
+    },
+    examples: [
+      {en: "I can't put up with this noise anymore, I'm going to look into soundproofing.", es: "No aguanto más este ruido, voy a investigar insonorización."},
+      {en: "She takes after her grandmother and looks up to her mum.", es: "Se parece a su abuela y admira a su mamá."},
+      {en: "We're running out of time, let's set off now or call off the trip.", es: "Nos estamos quedando sin tiempo, salgamos ya o cancelemos el viaje."},
+      {en: "He came across an old diary while he was going through his grandad's things.", es: "Encontró un diario viejo mientras revisaba las cosas del abuelo."}
+    ],
+    exercises: [
+      {type: "mc", q: "I can't ___ up with his attitude anymore.", options: ["put", "get", "take"], answer: 0, fb: "Put up with = tolerar, aguantar"},
+      {type: "fill", q: "Completá: She ___ after her mother (se parece).", answer: "takes", fb: "Take after = parecerse a un familiar"},
+      {type: "mc", q: "We ___ out of petrol on the motorway.", options: ["got", "ran", "came"], answer: 1, fb: "Run out of = quedarse sin algo"},
+      {type: "mc", q: "I need to ___ up with a better excuse.", options: ["come", "get", "put"], answer: 0, fb: "Come up with = inventar una idea"},
+      {type: "fill", q: "Completá: Don't ___ up! You can do it (no te rindas).", answer: "give", fb: "Give up = rendirse"},
+      {type: "mc", q: "The meeting was ___ off because of the storm.", options: ["called", "taken", "got"], answer: 0, fb: "Call off = cancelar"},
+      {type: "mc", q: "I ___ into my old schoolmate at the supermarket.", options: ["came", "ran", "got"], answer: 1, fb: "Run into someone = cruzarse por casualidad"},
+      {type: "fill", q: "Completá: Can you ___ after my dog while I'm away? (cuidar)", answer: "look", fb: "Look after = cuidar"},
+      {type: "mc", q: "My car ___ down on the way to work.", options: ["broke", "turned", "got"], answer: 0, fb: "Break down = romperse (máquina)"},
+      {type: "fill", q: "Completá: I'm really ___ forward to the holidays. (ansioso)", answer: "looking", fb: "Look forward to = estar ansioso por"}
+    ]
+  },
+  {
+    id: 8,
+    title: "Gerunds & Infinitives",
+    desc: "¿-ing o to + verbo? Se acabó la duda",
+    emoji: "🎬",
+    theory: "Después de algunos verbos va <b>gerundio</b> (-ing), después de otros va <b>infinitivo</b> (to + verbo), y algunos aceptan los dos con o sin cambio de significado. También después de <b>preposiciones</b> siempre va -ing. En el First hay que tener esto controladísimo.",
+    audioText: "Después de verbos como enjoy, finish, mind, avoid y suggest va gerundio. Después de want, decide, plan, hope y promise va infinitivo. Algunos como like, love, hate y prefer aceptan los dos. Después de preposiciones siempre va -ing.",
+    audioTextEn: "After verbs like enjoy, finish, mind, avoid, and suggest we use the gerund. After want, decide, plan, hope, and promise we use the infinitive. Some verbs like like, love, hate, and prefer accept both. After prepositions, we always use -ing.",
+    table: {
+      headers: ["Estructura", "Verbos típicos", "Ejemplo"],
+      rows: [
+        ["Verb + -ing", "enjoy, finish, avoid, mind, suggest", "I enjoy reading"],
+        ["Verb + to + inf", "want, decide, plan, hope, promise", "She wants to leave"],
+        ["Los dos sin cambio", "like, love, hate, prefer, start", "I like swimming / to swim"],
+        ["Los dos con cambio", "remember, forget, stop, try", "Stop smoking ≠ stop to smoke"],
+        ["Preposición + -ing", "interested in, good at, tired of", "I'm good at cooking"]
+      ]
+    },
+    examples: [
+      {en: "I remember locking the door.", es: "Me acuerdo de haber cerrado la puerta."},
+      {en: "I remembered to lock the door.", es: "Me acordé de cerrar la puerta."},
+      {en: "She stopped smoking last year.", es: "Dejó de fumar el año pasado."},
+      {en: "She stopped to smoke a cigarette.", es: "Paró para fumar un cigarrillo."}
+    ],
+    exercises: [
+      {type: "mc", q: "I enjoy ___ to music.", options: ["listen", "listening", "to listen"], answer: 1, fb: "Enjoy + -ing"},
+      {type: "mc", q: "She decided ___ abroad.", options: ["move", "moving", "to move"], answer: 2, fb: "Decide + to + inf"},
+      {type: "fill", q: "Completá: I'm interested in ___ (learn) French.", answer: "learning", fb: "Después de preposición: -ing"},
+      {type: "mc", q: "Remember ___ the lights off when you leave.", options: ["turn", "turning", "to turn"], answer: 2, fb: "Remember to + inf = acordate de hacerlo"},
+      {type: "fill", q: "Completá: Would you mind ___ (open) the window?", answer: "opening", fb: "Mind + -ing"}
+    ]
+  },
+  {
+    id: 9,
+    title: "Future Forms",
+    desc: "Will, going to, present continuous ~ todos miran al futuro",
+    emoji: "🚀",
+    theory: "El inglés tiene varias formas de hablar del futuro y cada una comunica algo distinto: <b>will</b> para decisiones espontáneas, promesas y predicciones sin evidencia; <b>be going to</b> para planes e intenciones y predicciones con evidencia; <b>present continuous</b> para arreglos futuros fijados; <b>present simple</b> para horarios.",
+    audioText: "Usá will para decisiones que tomás en el momento, predicciones generales, promesas y ofertas. Usá going to para planes que ya tenías y predicciones con evidencia. Usá el present continuous para arreglos con otra persona, como citas médicas o reuniones.",
+    audioTextEn: "Use will for decisions made in the moment, general predictions, promises, and offers. Use going to for plans you already had and predictions with evidence. Use the present continuous for arrangements with another person, like doctor appointments or meetings.",
+    table: {
+      headers: ["Forma", "Uso", "Ejemplo"],
+      rows: [
+        ["will", "decisión espontánea", "I'll help you!"],
+        ["will", "predicción sin evidencia", "It will rain one day"],
+        ["be going to", "plan / intención", "I'm going to study French"],
+        ["be going to", "predicción con evidencia", "Look at the clouds, it's going to rain"],
+        ["Present Continuous", "arreglo fijado", "I'm meeting John at 6"],
+        ["Present Simple", "horario / timetable", "The train leaves at 7"]
+      ]
+    },
+    examples: [
+      {en: "I'll answer the phone!", es: "¡Yo atiendo! (decisión en el momento)"},
+      {en: "I'm going to travel next summer.", es: "Voy a viajar el próximo verano. (plan)"},
+      {en: "I'm having dinner with Sarah tonight.", es: "Ceno con Sarah esta noche. (arreglado)"},
+      {en: "The film starts at 8 PM.", es: "La película empieza a las 8. (horario)"}
+    ],
+    exercises: [
+      {type: "mc", q: "Oh, the phone is ringing. I ___ answer it.", options: ["am going to", "'ll", "am"], answer: 1, fb: "Decisión espontánea = will"},
+      {type: "fill", q: "Completá: Look at those clouds! It ___ rain (evidencia).", answer: "is going to", fb: "Con evidencia visible: going to"},
+      {type: "mc", q: "I ___ dinner with my parents tomorrow at 7.", options: ["will have", "am having", "have"], answer: 1, fb: "Arreglo fijo = Present Continuous"},
+      {type: "mc", q: "The train ___ at 6:30 AM.", options: ["will leave", "is leaving", "leaves"], answer: 2, fb: "Horario = Present Simple"},
+      {type: "fill", q: "Completá: I ___ (study) Japanese next year (plan).", answer: "am going to study", fb: "Plan con intención = going to"}
+    ]
+  },
+  {
+    id: 10,
+    title: "Comparatives & Superlatives",
+    desc: "Más, menos, el mejor, el peor",
+    emoji: "📊",
+    theory: "Los <b>comparativos</b> comparan dos cosas y los <b>superlativos</b> eligen uno entre varios. Con adjetivos <b>cortos</b> (1 sílaba) se agrega -er/-est, con <b>largos</b> (3+ sílabas) se usa more/most. Hay <b>irregulares</b> clave como good-better-best, bad-worse-worst, far-further-furthest. También existen estructuras especiales como <b>as...as</b>, <b>not as...as</b>, <b>the more...the more</b>.",
+    audioText: "Para adjetivos cortos de una sílaba agregás er para comparar y est para superlativo. Para adjetivos largos de tres o más sílabas usás more y the most. Los adjetivos de dos sílabas terminados en y cambian la y por i y agregan er o est.",
+    audioTextEn: "For short one-syllable adjectives, add er for comparatives and est for superlatives. For long three-syllable adjectives, use more and the most. Two-syllable adjectives ending in y change the y to i and add er or est.",
+    table: {
+      headers: ["Adjetivo", "Comparativo", "Superlativo"],
+      rows: [
+        ["tall (corto)", "taller", "the tallest"],
+        ["happy (y → i)", "happier", "the happiest"],
+        ["beautiful (largo)", "more beautiful", "the most beautiful"],
+        ["good", "better", "the best"],
+        ["bad", "worse", "the worst"],
+        ["far", "further / farther", "the furthest / farthest"]
+      ]
+    },
+    examples: [
+      {en: "London is bigger than Dublin.", es: "Londres es más grande que Dublín."},
+      {en: "She is the most talented student in the class.", es: "Es la estudiante más talentosa de la clase."},
+      {en: "This coffee is as strong as the other one.", es: "Este café es tan fuerte como el otro."},
+      {en: "The more you practice, the better you get.", es: "Cuanto más practicás, mejor te volvés."}
+    ],
+    exercises: [
+      {type: "mc", q: "My sister is ___ than me.", options: ["taller", "more tall", "tallest"], answer: 0, fb: "Adjetivo corto + -er"},
+      {type: "fill", q: "Completá: This is ___ (interesting) book I have ever read.", answer: "the most interesting", fb: "Adjetivo largo: the most + adj"},
+      {type: "mc", q: "My grade is ___ than yours.", options: ["worser", "worse", "more bad"], answer: 1, fb: "Bad es irregular: worse"},
+      {type: "mc", q: "He's not as tall ___ his brother.", options: ["than", "as", "that"], answer: 1, fb: "not as...as para comparar igualdad negativa"},
+      {type: "fill", q: "Completá: He is ___ (good) player on the team.", answer: "the best", fb: "Good es irregular: the best"}
+    ]
+  },
+  {
+    id: 11,
+    title: "Word Formation",
+    desc: "Prefijos, sufijos y cómo armar palabras",
+    emoji: "🔤",
+    theory: "En el First hay un ejercicio fijo donde te dan una palabra raíz y tenés que transformarla para encajar en el texto. Hay que manejar <b>prefijos negativos</b> (un-, in-, im-, dis-, mis-), <b>sufijos para sustantivos</b> (-tion, -ment, -ness, -ity), <b>sufijos para adjetivos</b> (-able, -ful, -less, -ive), y <b>sufijos para adverbios</b> (-ly).",
+    audioText: "Los prefijos más comunes en inglés son un, in, im, dis y mis, todos con sentido negativo. Los sufijos para formar sustantivos son tion, ment, ness e ity. Los sufijos para formar adjetivos son able, ful, less e ive. El sufijo ly forma adverbios a partir de adjetivos.",
+    audioTextEn: "The most common prefixes in English are un, in, im, dis, and mis, all with a negative meaning. The suffixes to form nouns are tion, ment, ness, and ity. The suffixes to form adjectives are able, ful, less, and ive. The suffix ly forms adverbs from adjectives.",
+    table: {
+      headers: ["Palabra raíz", "Sustantivo", "Adjetivo", "Adverbio"],
+      rows: [
+        ["act", "action / activity", "active", "actively"],
+        ["care", "care", "careful / careless", "carefully"],
+        ["use", "use / user", "useful / useless", "usefully"],
+        ["happy", "happiness", "happy / unhappy", "happily"],
+        ["decide", "decision", "decisive", "decisively"]
+      ]
+    },
+    examples: [
+      {en: "She made a careful decision.", es: "Tomó una decisión cuidadosa."},
+      {en: "He behaved carelessly at the party.", es: "Se portó sin cuidado en la fiesta."},
+      {en: "The information was very useful.", es: "La información fue muy útil."},
+      {en: "I totally disagree with you.", es: "Estoy totalmente en desacuerdo con vos."}
+    ],
+    exercises: [
+      {type: "fill", q: "CARE → She drove ___ in the rain.", answer: "carefully", fb: "Careful + ly = carefully (adverbio)"},
+      {type: "fill", q: "DECIDE → His ___ to leave surprised everyone.", answer: "decision", fb: "Decide + -sion = decision (sustantivo)"},
+      {type: "mc", q: "HAPPY → The children were ___.", options: ["happyness", "happiness", "happy"], answer: 2, fb: "Happy ya es adjetivo, no le agregues nada"},
+      {type: "fill", q: "USE → This tool is completely ___ (negativo).", answer: "useless", fb: "Use + less = useless (sin utilidad)"},
+      {type: "fill", q: "AGREE → I completely ___ (negativo) with that idea.", answer: "disagree", fb: "Dis + agree = disagree"}
+    ]
+  },
+  {
+    id: 12,
+    title: "Linking Words",
+    desc: "Conectores para que tu texto fluya como un río",
+    emoji: "🌊",
+    theory: "Los <b>conectores</b> hacen que tu writing del First no parezca una lista de oraciones sueltas. Los clave son: <b>contraste</b> (however, although, despite, whereas), <b>causa</b> (because, since, as), <b>consecuencia</b> (therefore, so, as a result), <b>adición</b> (moreover, furthermore, besides), <b>ejemplo</b> (for instance, such as), y <b>conclusión</b> (in conclusion, to sum up).",
+    audioText: "Los conectores de contraste son however, although, despite, in spite of y whereas. Los de causa son because, since y as. Los de consecuencia son therefore, so, as a result y consequently. Los de adición son moreover, furthermore y besides.",
+    audioTextEn: "Contrast linkers are however, although, despite, in spite of, and whereas. Cause linkers are because, since, and as. Consequence linkers are therefore, so, as a result, and consequently. Addition linkers are moreover, furthermore, and besides.",
+    table: {
+      headers: ["Función", "Conectores", "Ejemplo"],
+      rows: [
+        ["Contraste", "however, although, despite", "Although it rained, we went out"],
+        ["Causa", "because, since, as", "I'm tired because I worked late"],
+        ["Consecuencia", "therefore, so, thus", "It rained, therefore we stayed in"],
+        ["Adición", "moreover, furthermore, besides", "It's cheap. Moreover, it's good"],
+        ["Ejemplo", "for instance, such as", "Fruits, such as apples"],
+        ["Conclusión", "in conclusion, to sum up", "In conclusion, I agree"]
+      ]
+    },
+    examples: [
+      {en: "Although he was tired, he kept working.", es: "Aunque estaba cansado, siguió trabajando."},
+      {en: "Despite the rain, the match continued.", es: "A pesar de la lluvia, el partido continuó."},
+      {en: "The food was good. Moreover, it was cheap.", es: "La comida estuvo buena. Además, era barata."},
+      {en: "In conclusion, I believe we should act now.", es: "En conclusión, creo que deberíamos actuar ya."}
+    ],
+    exercises: [
+      {type: "mc", q: "___ the bad weather, we enjoyed the trip.", options: ["Although", "Despite", "However"], answer: 1, fb: "Despite + sustantivo (sin verbo)"},
+      {type: "mc", q: "I was tired. ___, I went to the party.", options: ["Although", "However", "Because"], answer: 1, fb: "However conecta dos oraciones con contraste"},
+      {type: "fill", q: "Completá: ___ it was raining, they played outside (aunque).", answer: "Although", fb: "Although + oración completa"},
+      {type: "mc", q: "The traffic was bad. ___, we were late.", options: ["Moreover", "Therefore", "However"], answer: 1, fb: "Therefore = consecuencia"},
+      {type: "fill", q: "Completá: He didn't come ___ he was ill (causa).", answer: "because", fb: "Because + oración completa para causa"}
+    ]
+  }
+];
+
+
+/* HISTORIAS - palabras con [[palabra|traducción]] son las que se subrayan */
+var IRREGULAR_VERBS = [
+  // [base, past, participle, traducción, star (true = top), categoría: same/changing/other]
+  ["be", "was/were", "been", "ser / estar", true, "other"],
+  ["become", "became", "become", "convertirse en", true, "other"],
+  ["begin", "began", "begun", "empezar", true, "changing"],
+  ["bite", "bit", "bitten", "morder", false, "changing"],
+  ["blow", "blew", "blown", "soplar", false, "changing"],
+  ["break", "broke", "broken", "romper", true, "changing"],
+  ["bring", "brought", "brought", "traer", true, "other"],
+  ["build", "built", "built", "construir", true, "other"],
+  ["burn", "burnt/burned", "burnt/burned", "quemar", false, "other"],
+  ["buy", "bought", "bought", "comprar", true, "other"],
+  ["catch", "caught", "caught", "atrapar / agarrar", true, "other"],
+  ["choose", "chose", "chosen", "elegir", true, "changing"],
+  ["come", "came", "come", "venir", true, "other"],
+  ["cost", "cost", "cost", "costar", true, "same"],
+  ["cut", "cut", "cut", "cortar", true, "same"],
+  ["deal", "dealt", "dealt", "tratar con / repartir", false, "other"],
+  ["do", "did", "done", "hacer", true, "other"],
+  ["draw", "drew", "drawn", "dibujar / empatar", false, "changing"],
+  ["dream", "dreamt/dreamed", "dreamt/dreamed", "soñar", false, "other"],
+  ["drink", "drank", "drunk", "beber", true, "changing"],
+  ["drive", "drove", "driven", "manejar", true, "changing"],
+  ["eat", "ate", "eaten", "comer", true, "changing"],
+  ["fall", "fell", "fallen", "caer", true, "changing"],
+  ["feed", "fed", "fed", "alimentar", false, "other"],
+  ["feel", "felt", "felt", "sentir", true, "other"],
+  ["fight", "fought", "fought", "pelear", false, "other"],
+  ["find", "found", "found", "encontrar", true, "other"],
+  ["fly", "flew", "flown", "volar", true, "changing"],
+  ["forget", "forgot", "forgotten", "olvidar", true, "changing"],
+  ["forgive", "forgave", "forgiven", "perdonar", false, "changing"],
+  ["freeze", "froze", "frozen", "congelar", false, "changing"],
+  ["get", "got", "got/gotten", "obtener / conseguir", true, "other"],
+  ["give", "gave", "given", "dar", true, "changing"],
+  ["go", "went", "gone", "ir", true, "other"],
+  ["grow", "grew", "grown", "crecer", true, "changing"],
+  ["hang", "hung", "hung", "colgar", false, "other"],
+  ["have", "had", "had", "tener", true, "other"],
+  ["hear", "heard", "heard", "escuchar", true, "other"],
+  ["hide", "hid", "hidden", "esconder", false, "changing"],
+  ["hit", "hit", "hit", "golpear", true, "same"],
+  ["hold", "held", "held", "sostener", false, "other"],
+  ["hurt", "hurt", "hurt", "lastimar / doler", true, "same"],
+  ["keep", "kept", "kept", "mantener / guardar", true, "other"],
+  ["know", "knew", "known", "saber / conocer", true, "changing"],
+  ["lay", "laid", "laid", "poner / colocar", false, "other"],
+  ["lead", "led", "led", "liderar", false, "other"],
+  ["learn", "learnt/learned", "learnt/learned", "aprender", true, "other"],
+  ["leave", "left", "left", "dejar / irse", true, "other"],
+  ["lend", "lent", "lent", "prestar", false, "other"],
+  ["let", "let", "let", "dejar / permitir", true, "same"],
+  ["lie", "lay", "lain", "yacer / acostarse", false, "changing"],
+  ["lose", "lost", "lost", "perder", true, "other"],
+  ["make", "made", "made", "hacer / fabricar", true, "other"],
+  ["mean", "meant", "meant", "significar", true, "other"],
+  ["meet", "met", "met", "conocer / encontrarse", true, "other"],
+  ["pay", "paid", "paid", "pagar", true, "other"],
+  ["put", "put", "put", "poner", true, "same"],
+  ["read", "read", "read", "leer (pron. distinta)", true, "same"],
+  ["ride", "rode", "ridden", "montar / andar", false, "changing"],
+  ["ring", "rang", "rung", "sonar / llamar", false, "changing"],
+  ["rise", "rose", "risen", "subir / elevarse", false, "changing"],
+  ["run", "ran", "run", "correr", true, "other"],
+  ["say", "said", "said", "decir", true, "other"],
+  ["see", "saw", "seen", "ver", true, "other"],
+  ["sell", "sold", "sold", "vender", true, "other"],
+  ["send", "sent", "sent", "enviar", true, "other"],
+  ["set", "set", "set", "fijar / colocar", false, "same"],
+  ["shake", "shook", "shaken", "sacudir", false, "changing"],
+  ["shine", "shone", "shone", "brillar", false, "other"],
+  ["shoot", "shot", "shot", "disparar", false, "other"],
+  ["show", "showed", "shown", "mostrar", true, "other"],
+  ["shut", "shut", "shut", "cerrar", false, "same"],
+  ["sing", "sang", "sung", "cantar", true, "changing"],
+  ["sink", "sank", "sunk", "hundirse", false, "changing"],
+  ["sit", "sat", "sat", "sentarse", true, "other"],
+  ["sleep", "slept", "slept", "dormir", true, "other"],
+  ["speak", "spoke", "spoken", "hablar", true, "changing"],
+  ["spend", "spent", "spent", "gastar / pasar tiempo", true, "other"],
+  ["stand", "stood", "stood", "estar de pie", false, "other"],
+  ["steal", "stole", "stolen", "robar", false, "changing"],
+  ["swim", "swam", "swum", "nadar", true, "changing"],
+  ["take", "took", "taken", "tomar / llevar", true, "changing"],
+  ["teach", "taught", "taught", "enseñar", true, "other"],
+  ["tell", "told", "told", "decir / contar", true, "other"],
+  ["think", "thought", "thought", "pensar", true, "other"],
+  ["throw", "threw", "thrown", "tirar / lanzar", true, "changing"],
+  ["understand", "understood", "understood", "entender", true, "other"],
+  ["wake", "woke", "woken", "despertar", false, "changing"],
+  ["wear", "wore", "worn", "usar (ropa)", true, "changing"],
+  ["win", "won", "won", "ganar", true, "other"],
+  ["write", "wrote", "written", "escribir", true, "changing"]
+];
+
+
+var STORIES = [
+  {
+    id: 1,
+    title: "The Rainy Day in Brighton",
+    emoji: "☔",
+    level: "B2 - Intermediate",
+    paragraphs: [
+      "Sarah had been [[looking forward to|ansiando]] her weekend trip to Brighton for months. She had [[arranged|organizado]] everything with her best friend Emma, and the plan was perfect: seaside walks, fish and chips, and a visit to the famous Royal Pavilion. However, as she [[gazed|miraba fijamente]] out of the train window, she noticed the sky growing darker by the minute.",
+      "When they [[stepped off|bajaron del]] the train at Brighton station, the [[downpour|aguacero]] was so heavy that they could barely see the [[pavement|vereda]] in front of them. Emma [[sighed|suspiró]] and [[muttered|murmuró]] something about always having bad luck with the weather. Sarah, however, refused to let the rain [[ruin|arruinar]] their day.",
+      "They [[rushed|corrieron]] into a small café near the pier, where the warm smell of coffee and freshly baked scones [[greeted|recibió]] them. The owner, an elderly woman with kind eyes, offered them a table by the window. [[Despite|A pesar de]] the grey sky outside, the café felt cozy and full of life, with locals chatting and laughing.",
+      "As they waited for the rain to [[ease off|amainar]], Sarah and Emma started talking to the owner, who turned out to be a former schoolteacher. She told them [[fascinating|fascinantes]] stories about old Brighton, the smugglers who had once [[hidden|escondido]] in the underground tunnels, and the Victorian era when the city became a fashionable seaside [[resort|destino turístico]].",
+      "By the time they finished their coffee, the rain had stopped, and a beautiful rainbow [[stretched|se extendía]] across the sky. Sarah smiled at Emma and said that sometimes the best memories come from [[unexpected|inesperados]] moments. They walked to the pier, feeling [[grateful|agradecidas]] for the rainy day that had introduced them to such a wonderful person."
+    ]
+  },
+  {
+    id: 2,
+    title: "A Strange Letter",
+    emoji: "📮",
+    level: "B2 - Intermediate",
+    paragraphs: [
+      "Oliver had just moved into his new flat in Manchester when he found a [[mysterious|misteriosa]] letter [[stuck|pegada]] under the kitchen door. The envelope was yellow with age, and the [[handwriting|caligrafía]] looked like it belonged to another century. He hesitated for a moment, wondering if he should open something that clearly was not [[addressed|dirigida]] to him.",
+      "Curiosity finally got the [[better of him|lo venció]]. Inside, he found a letter dated 1962, written by a woman called Margaret to someone named Thomas. The letter spoke of love, of [[regret|arrepentimiento]], and of a promise to meet at the old [[lighthouse|faro]] in Whitby the following summer. Oliver felt a strange [[tingling|cosquilleo]] sensation as he read the words.",
+      "That night, he could not stop thinking about the letter. Who was Margaret? Had Thomas ever [[received|recibido]] her message? He decided to investigate, even though his friends told him he was being [[ridiculous|ridículo]]. He started by searching old newspapers and records online, and [[gradually|gradualmente]] pieced together a story that seemed impossible.",
+      "It turned out that Margaret had been a local journalist and Thomas a sailor who [[disappeared|desapareció]] at sea in 1963. The letter had somehow never reached him. Oliver felt an [[urge|impulso]] to travel to Whitby and see the lighthouse for himself, even though he had no idea what he [[expected|esperaba]] to find there.",
+      "When he finally arrived, the lighthouse stood exactly as Margaret had described. As he walked around it, an old woman [[approached|se acercó]] him. She was in her eighties and [[remarked|comentó]] that he reminded her of someone from long ago. Oliver showed her the letter, and her eyes filled with tears. 'I am Margaret,' she whispered, 'and I waited here every summer for sixty years.'"
+    ]
+  },
+  {
+    id: 3,
+    title: "The Lost Phone",
+    emoji: "📱",
+    level: "B2 - Intermediate",
+    paragraphs: [
+      "James was running late for the most important job interview of his life. He [[rushed|corrió apurado]] through the busy streets of London, [[clutching|aferrando]] his CV in one hand and checking the time on his phone with the other. As he got into the Tube, the doors closed [[abruptly|abruptamente]] behind him, and he realized, to his horror, that his phone was no longer in his hand.",
+      "He had probably [[dropped|dejado caer]] it on the platform or in the crowd. His heart [[sank|se hundió]] as he remembered that the address of the interview was saved in his phone, and he had no idea how to get there. He [[considered|consideró]] going back, but there was no time. He would have to find another way.",
+      "At the next station, he jumped out and [[approached|se acercó a]] a young woman reading a book. He [[apologized|se disculpó]] for [[interrupting|interrumpir]] her and explained his situation. She smiled, took out her own phone, and helped him find the address of the company. She even offered him a bottle of water and [[wished|deseó]] him good luck.",
+      "James arrived at the interview just in time, [[breathless|sin aliento]] but determined. The [[interviewer|entrevistador]] was a [[stern|severo]] man who asked difficult questions about problem-solving and handling [[unexpected|inesperadas]] situations. James told him the story of the phone, and how a stranger's kindness had saved his day. The interviewer actually laughed.",
+      "A week later, James got a call on his landline: he had been [[offered|le habían ofrecido]] the job. The interviewer told him that his story had [[impressed|impresionado]] the team because it showed [[resourcefulness|ingenio]] and gratitude. To his [[delight|alegría]], the next day a package arrived: his lost phone, mailed by another stranger who had found it on the platform with a note saying 'Pay it forward'."
+    ]
+  },
+  {
+    id: 4,
+    title: "The Summer Festival",
+    emoji: "🎪",
+    level: "B2 - Upper-Intermediate",
+    paragraphs: [
+      "Every year, the small village of Abbotsbury [[hosted|albergaba]] a summer festival that [[attracted|atraía]] visitors from all over the country. For Clara, who had lived in the village her whole life, the festival was the [[highlight|lo más destacado]] of her year. But this summer was different, because she had been chosen to [[lead|liderar]] the organizing committee for the first time.",
+      "The [[responsibility|responsabilidad]] was [[overwhelming|abrumadora]]. There were [[countless|incontables]] details to arrange: the live music, the food stalls, the [[craftspeople|artesanos]], the fireworks, and the traditional flower parade. Clara [[barely|apenas]] slept for weeks. She met with every team leader, double-checked every supplier, and even repainted the main banner herself.",
+      "Two days before the festival, disaster struck: the band that was supposed to [[headline|encabezar]] the main concert [[cancelled|canceló]] at the last minute. Clara felt like crying, but instead she called every musician she knew in the region. She contacted folk singers, a [[retired|jubilado]] rock band, and even a group of teenagers who played in garages.",
+      "By the night of the festival, Clara had [[somehow|de alguna manera]] [[managed|logrado]] to put together a [[lineup|cartelera]] that was more [[diverse|diversa]] and more interesting than the original. The villagers were [[amazed|asombrados]]. Children danced to folk songs while their parents [[swayed|se balanceaban]] to classic rock. The atmosphere was electric and full of surprise.",
+      "As the last fireworks [[lit up|iluminaron]] the sky, the mayor took the microphone and asked Clara to join him on stage. He [[publicly|públicamente]] thanked her for her [[dedication|dedicación]] and for turning a potential disaster into one of the best festivals the village had ever seen. Clara felt a [[mixture|mezcla]] of exhaustion and joy, and realized she had discovered something important: sometimes the best moments come from the biggest challenges."
+    ]
+  },
+  {
+    id: 5,
+    title: "The Cottage in the Woods",
+    emoji: "🏡",
+    level: "B2 - Upper-Intermediate",
+    paragraphs: [
+      "When Lucy [[inherited|heredó]] her grandmother's old cottage in the Lake District, she was not sure what to do with it. She lived in Manchester and had a busy job as a graphic designer. However, after months of stress and sleepless nights, she decided to [[take a break|tomar un descanso]] and spend a month alone at the cottage to think about her future.",
+      "The cottage was [[charming|encantadora]] but [[neglected|descuidada]]. The walls needed painting, the garden was [[overgrown|tapado por la maleza]] with weeds, and the old wooden floors [[creaked|crujían]] with every step. Lucy felt [[strangely|extrañamente]] peaceful there, though. She spent her days cleaning, cooking simple meals, and walking in the surrounding woods.",
+      "One afternoon, while exploring the [[attic|altillo]], she found a wooden box full of her grandmother's old [[sketches|bocetos]]. Lucy had no idea her grandmother had been an [[artist|artista]]. The drawings were beautiful: landscapes, [[portraits|retratos]], and small details of the cottage garden. Among them was a letter addressed to Lucy.",
+      "In the letter, her grandmother confessed that she had [[always|siempre]] dreamed of being a professional painter, but life had [[got in the way|se le había cruzado]]. She wrote that she hoped Lucy would follow her own dreams, and [[enclosed|adjuntaba]] a small watercolour of Lucy as a child, holding a crayon. Lucy cried for the first time in years.",
+      "That evening, Lucy made a decision that would change her life. She would not sell the cottage. Instead, she would [[quit|renunciar a]] her job in Manchester, move to the Lake District, and try to build a small business creating illustrations and teaching art workshops. Six months later, her first workshop was fully booked, and the cottage was filled with the sound of [[laughter|risas]] once again."
+    ]
+  },
+  {
+    id: 6,
+    title: "The Wrong Train",
+    emoji: "🚆",
+    level: "B2 - Upper-Intermediate",
+    paragraphs: [
+      "It was supposed to be a simple journey from Edinburgh to Glasgow, but Marcus was so [[absorbed|absorto]] in his book that he did not hear the announcement. By the time he looked up, the train was moving, and he realized with [[horror|horror]] that he had [[boarded|abordado]] the wrong train. He was now heading north, towards the Highlands, with no idea where he would end up.",
+      "Marcus was the kind of person who [[planned|planeaba]] everything in advance. A wrong turn, a missed train, a change in schedule: all of these things made him anxious. He looked at his ticket, checked the map on his phone, and tried to calculate how much money it would cost to get back. His stomach [[twisted|se retorció]] with frustration.",
+      "But then, something unexpected happened. The train [[emerged|emergió]] from a tunnel, and Marcus looked out the window to see the most [[breathtaking|impresionante]] landscape he had ever witnessed. Green mountains, silvery lochs, and small stone villages [[scattered|dispersos]] across the valleys. He had lived in Scotland his whole life but had never seen this part of the country.",
+      "At the next station, a small place called Kingussie, Marcus impulsively got off the train. He found a small bed and breakfast, checked in for the night, and spent the afternoon walking through the [[picturesque|pintoresco]] village. He talked to locals, tried haggis for the first time, and watched the sunset from a stone bridge over a quiet river.",
+      "When Marcus finally returned home three days later, his friends could not [[believe|creer]] the change in him. He looked relaxed, happy, and full of stories. He realized that sometimes life takes you on the wrong train on purpose, just to show you that the [[destination|destino]] you thought you needed was never the one you truly wanted. He [[promised|prometió]] himself to take wrong trains more often."
+    ]
+  }
+];
+
+/* GEOGRAFIA UK */
+var GEO = [
+  {
+    id: 1,
+    name: "London",
+    region: "England - South East",
+    emoji: "🏰",
+    color: "#e63946",
+    history: "London has been a major settlement for two thousand years. It was founded by the Romans in AD 43 as Londinium. During the Middle Ages, it grew into a powerful city with the construction of the Tower of London by William the Conqueror in 1078. The Great Fire of 1666 destroyed much of the medieval city, which was rebuilt with modern architecture by Sir Christopher Wren. The Victorian era transformed London into the capital of a global empire.",
+    traditions: "The changing of the guard at Buckingham Palace happens daily and attracts thousands of tourists. The Trooping of the Colour is a military parade for the monarch's official birthday. Afternoon tea, taken around four in the afternoon, is a classic British tradition. The Notting Hill Carnival every August is Europe's biggest street festival and celebrates Caribbean culture.",
+    food: "Traditional dishes include fish and chips, served with vinegar and mushy peas. A full English breakfast features bacon, eggs, sausages, beans, tomatoes and toast. Sunday roast is a family meal with meat, roast potatoes and Yorkshire pudding. London is also famous for its pie and mash shops in the East End.",
+    curiosities: "The London Underground is the oldest metro system in the world, opened in 1863. Big Ben is actually the name of the bell, not the clock tower, which is officially called the Elizabeth Tower. London has more than 170 museums, and most of the national ones are free. There are more than three hundred languages spoken in the city."
+  },
+  {
+    id: 2,
+    name: "Edinburgh",
+    region: "Scotland",
+    emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+    color: "#457b9d",
+    history: "Edinburgh has been the capital of Scotland since the fifteenth century. The city is built on ancient volcanic hills, with Edinburgh Castle standing on a rock that was fortified from the Iron Age. The Old Town and the elegant Georgian New Town were built in the eighteenth century during the Scottish Enlightenment, a period of great philosophical and scientific thinking.",
+    traditions: "The Edinburgh Festival Fringe in August is the largest arts festival in the world, filling the city with theatre, comedy and music. Hogmanay, the Scottish New Year celebration, is famous for its street parties and fireworks. The Royal Edinburgh Military Tattoo features bagpipes and drums performed at the castle. Burns Night in January celebrates the poet Robert Burns with haggis and whisky.",
+    food: "Haggis is the national dish, made from sheep offal, oats and spices, traditionally served with neeps (turnips) and tatties (potatoes). Scotch eggs and shortbread biscuits are popular snacks. Smoked salmon from the Scottish rivers is world famous. The city has a strong whisky culture with many specialized bars.",
+    curiosities: "Edinburgh inspired the world of Harry Potter, and author J K Rowling wrote much of the first book in local cafes. The city has an underground network of hidden streets and vaults from the seventeenth century. Greyfriars Bobby was a loyal dog who guarded his owner's grave for fourteen years and became a beloved city symbol."
+  },
+  {
+    id: 3,
+    name: "Cardiff",
+    region: "Wales",
+    emoji: "🐉",
+    color: "#2a9d8f",
+    history: "Cardiff was a small town until the industrial revolution, when it became the biggest coal exporting port in the world in the nineteenth century. The city grew rich from the coal mines of the South Wales valleys. Cardiff was officially declared the capital of Wales only in 1955. The city has since reinvented itself as a cultural and media hub.",
+    traditions: "Saint David's Day on the first of March celebrates the patron saint of Wales, with people wearing daffodils and leeks. The Welsh language is proudly spoken and appears on all official signs alongside English. Rugby is a national passion, and match days at the Principality Stadium fill the city with singing fans. The Eisteddfod is a traditional festival of poetry and music.",
+    food: "Welsh cakes are small sweet griddle cakes with raisins. Cawl is a hearty lamb and vegetable stew. Bara brith is a traditional fruit loaf. Laverbread, made from seaweed, is a local speciality. Welsh lamb is considered among the finest in the world.",
+    curiosities: "Cardiff Castle stands in the very centre of the city and combines Roman, Norman and Victorian architecture. The city has more castles per square mile than anywhere else in Europe. Cardiff Bay was transformed from industrial docks into a modern waterfront. The Welsh dragon on the national flag is one of the oldest national symbols in the world."
+  },
+  {
+    id: 4,
+    name: "Belfast",
+    region: "Northern Ireland",
+    emoji: "🚢",
+    color: "#f4a261",
+    history: "Belfast grew rapidly during the industrial revolution and became famous for shipbuilding. The Titanic was built in Belfast at the Harland and Wolff shipyard in 1912. The twentieth century was marked by the Troubles, a period of violent conflict between 1968 and 1998 that ended with the Good Friday Agreement. Today, Belfast is a vibrant city in full regeneration.",
+    traditions: "Saint Patrick's Day on the seventeenth of March is celebrated with parades and green decorations. Traditional Irish music sessions fill the pubs, with fiddles, tin whistles and bodhran drums. The Twelfth of July commemorates historical Protestant events and features marching bands. Belfast has a strong storytelling tradition, with ghost tours and legends.",
+    food: "The Ulster fry is a local version of the full breakfast, including soda bread and potato bread. Champ is a dish of mashed potatoes with spring onions. Irish stew with lamb and root vegetables is a comfort classic. Yellowman is a traditional honeycomb toffee sold at fairs.",
+    curiosities: "The Titanic Belfast museum, opened in 2012, is the world's largest Titanic visitor experience. The Giant's Causeway, with its forty thousand basalt columns, is nearby on the Antrim coast. Belfast has become a major filming location, especially for Game of Thrones. The Crown Liquor Saloon is a stunning Victorian pub owned by the National Trust."
+  },
+  {
+    id: 5,
+    name: "Manchester",
+    region: "England - North West",
+    emoji: "🎸",
+    color: "#e63946",
+    history: "Manchester was the world's first industrial city and the birthplace of the industrial revolution in the eighteenth century. Known as Cottonopolis, it was the centre of the global cotton industry. Manchester has always been a city of ideas and movements, hosting the first meeting of the Trades Union Congress and being the birthplace of the suffragette movement led by Emmeline Pankhurst.",
+    traditions: "Football is a religion here, with two famous clubs, Manchester United and Manchester City, whose rivalry divides the city. The Manchester International Festival every two years brings cutting-edge art and performance. The Chinese New Year celebration in the Northern Quarter is one of the biggest in Europe. The city has a strong music tradition from Oasis to The Smiths.",
+    food: "The Manchester egg is a variation of the Scotch egg made with black pudding. Eccles cakes, small sweet pastries with currants, come from nearby Eccles. Manchester has a huge curry mile in Rusholme, one of the largest concentrations of South Asian restaurants in Europe. Vimto, a fruit drink, was invented here in 1908.",
+    curiosities: "The world's first passenger railway station opened in Manchester in 1830. The Bridgewater Canal was Britain's first industrial canal. Alan Turing worked here after the war and helped lay the foundations of modern computing. The Hacienda nightclub, now demolished, helped launch electronic music in the eighties and nineties."
+  },
+  {
+    id: 6,
+    name: "The Cotswolds",
+    region: "England - South West",
+    emoji: "🏘️",
+    color: "#a08968",
+    history: "The Cotswolds became wealthy in the Middle Ages from the wool trade, as the local Cotswold sheep produced some of the best wool in Europe. The beautiful honey-coloured villages were built with local limestone. Churches in the area, called wool churches, were funded by rich merchants and are much grander than the small villages they serve. The area declined after the industrial revolution and remained frozen in time.",
+    traditions: "The Cotswold Olimpick Games, held since 1612, are an eccentric rural event featuring traditional sports like shin kicking. Cheese rolling at Cooper's Hill involves chasing a round cheese down a steep slope. Morris dancing, with bells, sticks and handkerchiefs, is kept alive in village greens. Many villages hold flower shows and open garden days in summer.",
+    food: "Cotswold lamb is a regional speciality, as is traditional farmhouse cheese. Cream teas with scones and clotted cream are served in almost every tea room. Local pubs serve hearty dishes like steak and ale pie. Farmers' markets sell homemade jams, honey and organic vegetables.",
+    curiosities: "The area is officially designated an Area of Outstanding Natural Beauty. Villages like Bibury, Castle Combe and Bourton-on-the-Water are considered among the prettiest in England. The Cotswold Way is a long-distance walking path covering more than a hundred miles. Many famous films have been shot here, including scenes from Harry Potter and Bridget Jones."
+  },
+  {
+    id: 7,
+    name: "Liverpool",
+    region: "England - North West",
+    emoji: "🎵",
+    color: "#457b9d",
+    history: "Liverpool grew from a small fishing village into one of the most important ports in the world during the eighteenth and nineteenth centuries. The city's wealth came from transatlantic trade, although this included a painful history of involvement in the slave trade, which the city now openly acknowledges. Liverpool welcomed millions of immigrants and emigrants, shaping its multicultural identity.",
+    traditions: "The city is deeply proud of its football, with Liverpool FC and Everton FC dividing loyalties. The Liverpool Sound City festival showcases new bands. Scouse humour is famous, warm and self-deprecating. The Cavern Club, where The Beatles played, still hosts live music every day. Pantomimes at Christmas are a beloved family tradition.",
+    food: "Scouse is a local stew of beef or lamb with potatoes and vegetables that gave the city's inhabitants their nickname. Wet nelly is a traditional pudding made from leftover bread. The city's docks area has many fish restaurants. Liverpool also has a strong Chinese food tradition thanks to its historic Chinatown, the oldest in Europe.",
+    curiosities: "Liverpool is a UNESCO World Heritage City thanks to its maritime mercantile buildings. The city is the birthplace of The Beatles, and dozens of locations related to the band can be visited. Liverpool has two cathedrals, one Anglican and one Catholic, connected by a street fittingly called Hope Street. The ferry across the Mersey is immortalized in a famous song."
+  },
+  {
+    id: 8,
+    name: "Oxford",
+    region: "England - South East",
+    emoji: "📚",
+    color: "#2a9d8f",
+    history: "Oxford University is the oldest English speaking university in the world, with teaching happening since around 1096. The city grew around the university and now has 38 colleges. Many famous thinkers studied or taught here, from J R R Tolkien to Stephen Hawking. The city has been a centre of learning for nearly a thousand years and has preserved its medieval character.",
+    traditions: "May Morning is celebrated at dawn on the first of May, when choristers sing from the top of Magdalen College tower. Punting on the River Cherwell is a classic Oxford pastime. The Bodleian Library has a tradition where students swear an oath not to damage books or bring fire into the library. Academic robes are still worn at formal dinners and examinations.",
+    food: "Oxford sausages have a unique blend of pork, veal, herbs and breadcrumbs. Oxford marmalade with its dark, thick-cut texture was invented here. The Covered Market, built in 1774, sells fresh produce and local specialities. The Turf Tavern, hidden down a tiny alley, is a historic pub where Bill Clinton famously did not inhale.",
+    curiosities: "Parts of Harry Potter were filmed at Christ Church College. Alice in Wonderland was inspired by a young girl who lived in Christ Church deanery. The Radcliffe Camera is one of the most photographed buildings in Britain. Oxford has more bookshops per capita than almost any city in the world."
+  },
+  {
+    id: 9,
+    name: "The Lake District",
+    region: "England - North West",
+    emoji: "🏞️",
+    color: "#2a9d8f",
+    history: "The Lake District has been inhabited since prehistoric times, with stone circles older than Stonehenge. Vikings settled here, leaving their mark on place names that often end in -thwaite or -fell. The area became famous in the nineteenth century through the Romantic poets, especially William Wordsworth, who drew inspiration from its landscapes. Beatrix Potter, author of Peter Rabbit, also lived and painted here.",
+    traditions: "Fell running is a local sport of running up and down mountains. Herdwick sheep farming has shaped the landscape for a thousand years. The Appleby Horse Fair brings together Romani travellers every June. Wordsworth's Grasmere hosts a traditional sports day with Cumberland wrestling. Many villages maintain ancient customs like well dressing.",
+    food: "Cumberland sausage is long and coiled, made with chunky meat and traditionally served in spirals. Kendal mint cake is a sugary energy snack famous among mountain climbers. Grasmere gingerbread, made to a secret recipe since 1854, is sold from a tiny shop next to Wordsworth's church. Sticky toffee pudding is believed to have been invented in the Lake District.",
+    curiosities: "The Lake District is England's largest national park and a UNESCO World Heritage Site. Wastwater is England's deepest lake. Scafell Pike is the highest mountain in England. The area has sixteen lakes, although technically only one is called a lake, the others being meres or waters. Beatrix Potter donated thousands of acres to preserve the landscape."
+  },
+  {
+    id: 10,
+    name: "Bath",
+    region: "England - South West",
+    emoji: "♨️",
+    color: "#f4a261",
+    history: "Bath was founded by the Romans around AD 60 as Aquae Sulis, built around natural hot springs. The Roman baths remain remarkably well preserved today. In the Georgian era of the eighteenth century, Bath became the most fashionable spa town in Britain, where high society gathered to socialize and take the waters. Jane Austen lived here for five years and set two of her novels in the city.",
+    traditions: "The Jane Austen Festival every September features period costume parades through the streets. The Bath Christmas Market is one of the prettiest in Europe. Traditional afternoon tea is served in historic venues like the Pump Room, where people drink warm spa water. Bath has a strong classical music scene with regular concerts in Georgian halls.",
+    food: "The Sally Lunn bun, a large, light and slightly sweet bread, has been baked at the same bakery since 1680. The Bath Oliver is a savoury biscuit served with cheese. Bath buns are sweet and topped with sugar. Local restaurants serve West Country ciders and cheeses, with Somerset being a famous cheese region nearby.",
+    curiosities: "Bath is the only entire city in the UK to be designated a UNESCO World Heritage Site. The Royal Crescent is a famous curved row of thirty Georgian houses. The thermal waters flow at 46 degrees Celsius and contain more than 40 minerals. Thomas Gainsborough and Jane Austen both spent formative years here, and the city features in many of their works."
+  },
+  {
+    id: 11,
+    name: "York",
+    region: "England - Yorkshire",
+    emoji: "⚔️",
+    color: "#6d6875",
+    history: "York was founded by the Romans in AD 71 as Eboracum, and later became the Viking capital of Jorvik in the ninth century. The city has some of the best preserved medieval walls in England, built mostly in the thirteenth century. The Shambles, a narrow medieval street, was mentioned in the Domesday Book of 1086. York was also the site of important events during the Wars of the Roses between the houses of York and Lancaster.",
+    traditions: "The Jorvik Viking Festival in February celebrates the city's Norse heritage with battle reenactments. The York Mystery Plays, dating from medieval times, are performed every four years. Ghost walks happen every evening, as York claims to be the most haunted city in Europe. Horse racing at York Racecourse is a historic social event.",
+    food: "The Yorkshire pudding is the most famous regional dish, a baked batter served with roast beef and gravy. Parkin is a sticky ginger cake made with oatmeal and treacle. Wensleydale cheese comes from the Yorkshire Dales nearby. Betty's Tea Rooms, a famous institution since 1919, serves Yorkshire curd tart and fat rascals, a local scone.",
+    curiosities: "The Shambles is said to have inspired Diagon Alley in Harry Potter. York Minster is one of the largest Gothic cathedrals in Northern Europe. Guy Fawkes, of Gunpowder Plot fame, was born in York in 1570. The city has more than 30 medieval churches, despite being relatively small."
+  },
+  {
+    id: 12,
+    name: "The Scottish Highlands",
+    region: "Scotland",
+    emoji: "⛰️",
+    color: "#457b9d",
+    history: "The Highlands were home to Gaelic speaking clans organized in a traditional system that lasted until the eighteenth century. The Jacobite risings, especially the disaster of Culloden in 1746, ended the clan system. The Highland Clearances of the nineteenth century forced thousands of families off their land to make way for sheep, causing massive emigration to America and Australia. Today the Highlands are sparsely populated but culturally rich.",
+    traditions: "Highland Games take place every summer in villages across the region, featuring caber tossing, hammer throwing and bagpipe competitions. Ceilidh dancing, with traditional music and set dances, is a popular social event. The wearing of tartan and kilts is associated with specific clans. Gaelic is still spoken by some communities, especially in the far north west.",
+    food: "Venison from wild deer is a traditional game meat. Cullen skink is a thick smoked haddock soup. Oatcakes and butter are a simple Highland staple. The Highlands produce some of the world's finest single malt whiskies, with distilleries like Glenfiddich, Dalmore and Talisker. Cranachan, a dessert with cream, whisky and raspberries, is a traditional treat.",
+    curiosities: "Loch Ness, home of the legendary monster, is one of the largest bodies of freshwater in Britain. Ben Nevis is the highest mountain in the British Isles at 1345 metres. The area has inspired countless films and series, from Braveheart to Outlander. The Isle of Skye, connected by a bridge, is considered one of the most beautiful landscapes in Europe."
+  }
+];
+
+/* PRONUNCIACION - palabras clave del First */
+var PRON_WORDS = [
+  {word: "thought", ipa: "/θɔːt/", trans: "pensamiento"},
+  {word: "through", ipa: "/θruː/", trans: "a través"},
+  {word: "though", ipa: "/ðoʊ/", trans: "aunque"},
+  {word: "tough", ipa: "/tʌf/", trans: "duro"},
+  {word: "enough", ipa: "/ɪˈnʌf/", trans: "suficiente"},
+  {word: "island", ipa: "/ˈaɪlənd/", trans: "isla"},
+  {word: "knight", ipa: "/naɪt/", trans: "caballero"},
+  {word: "answer", ipa: "/ˈɑːnsər/", trans: "respuesta"},
+  {word: "comfortable", ipa: "/ˈkʌmftəbl/", trans: "cómodo"},
+  {word: "vegetable", ipa: "/ˈvedʒtəbl/", trans: "vegetal"},
+  {word: "chocolate", ipa: "/ˈtʃɒklət/", trans: "chocolate"},
+  {word: "restaurant", ipa: "/ˈrestrɒnt/", trans: "restaurante"},
+  {word: "temperature", ipa: "/ˈtemprətʃər/", trans: "temperatura"},
+  {word: "Wednesday", ipa: "/ˈwenzdeɪ/", trans: "miércoles"},
+  {word: "February", ipa: "/ˈfebruəri/", trans: "febrero"},
+  {word: "clothes", ipa: "/kloʊðz/", trans: "ropa"},
+  {word: "sixth", ipa: "/sɪksθ/", trans: "sexto"},
+  {word: "world", ipa: "/wɜːrld/", trans: "mundo"},
+  {word: "beautiful", ipa: "/ˈbjuːtɪfl/", trans: "hermoso"},
+  {word: "jewellery", ipa: "/ˈdʒuːəlri/", trans: "joyería"},
+  {word: "receipt", ipa: "/rɪˈsiːt/", trans: "recibo"},
+  {word: "psychology", ipa: "/saɪˈkɒlədʒi/", trans: "psicología"},
+  {word: "genre", ipa: "/ˈʒɒnrə/", trans: "género"},
+  {word: "queue", ipa: "/kjuː/", trans: "fila"}
+];
+
+var PHONETIC_RULES = [
+  {rule: "TH sonoro (/ð/)", examples: "this, that, the, mother, brother, then", tip: "Lengua entre los dientes, con vibración en la garganta"},
+  {rule: "TH sordo (/θ/)", examples: "think, thank, three, month, bath, thin", tip: "Lengua entre los dientes, sin vibración, como un siseo suave"},
+  {rule: "Letras mudas", examples: "knight, write, hour, island, lamb, debt, listen, castle", tip: "Varias letras no se pronuncian; hay que aprenderlas de memoria"},
+  {rule: "Schwa /ə/", examples: "about, banana, camera, problem, system", tip: "Vocal débil y neutra, la más común del inglés, suena como una 'e' relajada"},
+  {rule: "Final -ed", examples: "worked /t/, played /d/, wanted /ɪd/", tip: "Suena /t/ después de consonante sorda, /d/ después de sonora o vocal, /ɪd/ después de t/d"},
+  {rule: "Final -s / -es", examples: "cats /s/, dogs /z/, buses /ɪz/", tip: "Parecido a -ed: /s/ sorda, /z/ sonora, /ɪz/ después de sibilantes"},
+  {rule: "Vocales largas vs cortas", examples: "ship /ɪ/ vs sheep /iː/, full /ʊ/ vs fool /uː/", tip: "Los pares mínimos son clave: practicalos para distinguir palabras"},
+  {rule: "Acento tonal", examples: "PHOtograph, phoTOgrapher, photoGRAPHic", tip: "En inglés el acento cambia el significado y el ritmo de la palabra"}
+];
+
+/* RECURSOS YouTube */
+var RESOURCES = [
+  {
+    category: "Canales principales para el First",
+    emoji: "🎯",
+    items: [
+      {channel: "BBC Learning English", url: "https://www.youtube.com/@bbclearningenglish", level: "B1-C1", desc: "Recursos oficiales, con series cortas como '6 Minute English' ideales para listening diario."},
+      {channel: "Learn English with Lucy", url: "https://www.youtube.com/@EnglishwithLucy", level: "B1-C2", desc: "Profesora británica clarísima, con clases especiales para First y Cambridge Advanced."},
+      {channel: "Oxford Online English", url: "https://www.youtube.com/@oxfordonlineenglish", level: "B1-C1", desc: "Lecciones estructuradas de gramática, listening y speaking con foco en exámenes."},
+      {channel: "Cambridge English", url: "https://www.youtube.com/@CambridgeEnglishTV", level: "B1-C2", desc: "Canal oficial del examen, con tips, samples del writing y speaking reales."}
+    ]
+  },
+  {
+    category: "Canales para inmersión y oído",
+    emoji: "🎧",
+    items: [
+      {channel: "Easy English", url: "https://www.youtube.com/@EasyEnglishVideos", level: "A2-B2", desc: "Entrevistas en la calle con subtítulos, ideal para escuchar inglés real y distintos acentos."},
+      {channel: "English With Cambridge", url: "https://www.youtube.com/@EnglishwithCambridge", level: "B1-C1", desc: "Historias cortas y analizadas, muy útiles para vocabulario y expresiones."},
+      {channel: "Gavin's English", url: "https://www.youtube.com/@Gavins-English", level: "B2-C1", desc: "Profesor con acento británico, ideal para pronunciación y phrasal verbs."},
+      {channel: "English Like A Native", url: "https://www.youtube.com/@EnglishLikeANative", level: "B1-C1", desc: "Anna Tyrie explica vocabulario, cultura británica y diferencias con americano."}
+    ]
+  },
+  {
+    category: "Para writing y vocabulario avanzado",
+    emoji: "✍️",
+    items: [
+      {channel: "English with Emma", url: "https://www.youtube.com/@engvidemma", level: "B1-C1", desc: "engVid clásico, con clases muy organizadas de gramática y escritura."},
+      {channel: "Crown Academy of English", url: "https://www.youtube.com/@CrownAcademyEnglish", level: "B1-B2", desc: "Profesor Andrew explica gramática complicada de forma simple, con visuales."},
+      {channel: "To Fluency", url: "https://www.youtube.com/@tofluency", level: "B2-C2", desc: "Jack te ayuda a pensar en inglés con frases naturales y mini-stories."},
+      {channel: "Papa Teach Me", url: "https://www.youtube.com/@papateachme", level: "B2-C1", desc: "Vocabulario, slang británico y listening con humor, para escaparle al inglés de libro."}
+    ]
+  },
+  {
+    category: "Podcasts y series útiles",
+    emoji: "📻",
+    items: [
+      {channel: "Luke's English Podcast", url: "https://www.youtube.com/@LukesEnglishPodcast", level: "B1-C2", desc: "El podcast más famoso de inglés británico, con episodios largos sobre cultura y humor."},
+      {channel: "The English We Speak (BBC)", url: "https://www.bbc.co.uk/learningenglish/english/features/the-english-we-speak", level: "B1-B2", desc: "Episodios cortos de 3 minutos sobre expresiones de moda y slang."},
+      {channel: "Friends (serie)", url: "https://www.youtube.com/results?search_query=friends+clips", level: "B1-B2", desc: "Clásico para inglés conversacional. Empezá con subtítulos en inglés y andá sacándolos."},
+      {channel: "Peaky Blinders / Sherlock", url: "https://www.youtube.com/results?search_query=peaky+blinders+clips", level: "B2-C1", desc: "Para acostumbrarte a acentos británicos más cerrados. Requiere oído medio-alto."}
+    ]
+  }
+];
+
+
+/* ============ ESTADO Y STORAGE ============ */
+
+var STATE = {
+  progress: {
+    lessonsDone: [],
+    storiesRead: [],
+    exercisesOk: 0,
+    lastOpenDate: null,
+    streak: 0
+  },
+  currentLesson: null,
+  currentStory: null,
+  currentGeo: null,
+  audioLang: "es"
+};
+
+function loadProgress() {
+  try {
+    var raw = localStorage.getItem("firstready_progress");
+    if (raw) {
+      var parsed = JSON.parse(raw);
+      STATE.progress = Object.assign(STATE.progress, parsed);
+    }
+  } catch (e) {
+    console.log("No se pudo cargar el progreso");
+  }
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem("firstready_progress", JSON.stringify(STATE.progress));
+  } catch (e) {
+    console.log("No se pudo guardar el progreso");
+  }
+}
+
+function updateStreak() {
+  var today = new Date().toDateString();
+  var last = STATE.progress.lastOpenDate;
+  if (last !== today) {
+    if (last) {
+      var yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      if (last === yesterday.toDateString()) {
+        STATE.progress.streak = (STATE.progress.streak || 0) + 1;
+      } else {
+        STATE.progress.streak = 1;
+      }
+    } else {
+      STATE.progress.streak = 1;
+    }
+    STATE.progress.lastOpenDate = today;
+    saveProgress();
+  }
+}
+
+/* ============ DOODLES ============ */
+
+function renderDoodles() {
+  var bg = document.getElementById("doodlesBg");
+  var emojis = ["📖", "✏️", "🎓", "📚", "✨", "🌟", "💭", "🗣️", "👂", "📝", "🇬🇧", "☕", "🎯", "🧠"];
+  var html = "";
+  for (var i = 0; i < 25; i++) {
+    var e = emojis[Math.floor(Math.random() * emojis.length)];
+    var top = Math.floor(Math.random() * 100);
+    var left = Math.floor(Math.random() * 100);
+    var delay = Math.floor(Math.random() * 20);
+    var size = 2 + Math.random() * 2.5;
+    html += '<span class="doodle" style="top:' + top + '%;left:' + left + '%;animation-delay:' + delay + 's;font-size:' + size + 'rem;">' + e + '</span>';
+  }
+  bg.innerHTML = html;
+}
+
+/* ============ NAVEGACION ============ */
+
+function showSection(id) {
+  var sections = document.querySelectorAll(".section");
+  for (var i = 0; i < sections.length; i++) {
+    sections[i].classList.remove("active");
+  }
+  var target = document.getElementById(id);
+  if (target) target.classList.add("active");
+
+  var btns = document.querySelectorAll("#mainNav button");
+  for (var j = 0; j < btns.length; j++) {
+    btns[j].classList.toggle("active", btns[j].getAttribute("data-section") === id);
+  }
+
+  // Reset inner views
+  if (id === "lecciones") {
+    document.getElementById("lessonsIndex").style.display = "block";
+    document.getElementById("lessonDetail").style.display = "none";
+  }
+  if (id === "historias") {
+    document.getElementById("storiesIndex").style.display = "block";
+    document.getElementById("storyDetail").style.display = "none";
+  }
+  if (id === "geografia") {
+    document.getElementById("geoIndex").style.display = "block";
+    document.getElementById("geoDetail").style.display = "none";
+  }
+
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+function setupNav() {
+  var btns = document.querySelectorAll("#mainNav button");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      showSection(this.getAttribute("data-section"));
+    });
+  }
+  var cards = document.querySelectorAll(".quick-card");
+  for (var k = 0; k < cards.length; k++) {
+    cards[k].addEventListener("click", function() {
+      showSection(this.getAttribute("data-go"));
+    });
+  }
+}
+
+/* ============ INICIO ============ */
+
+function renderInicio() {
+  var q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+  document.getElementById("quoteEn").textContent = q.en;
+  document.getElementById("quoteEs").textContent = q.es;
+  document.getElementById("quoteAuthor").textContent = "— " + q.author;
+
+  document.getElementById("statLessons").textContent = STATE.progress.lessonsDone.length;
+  document.getElementById("statStories").textContent = STATE.progress.storiesRead.length;
+  document.getElementById("statExercises").textContent = STATE.progress.exercisesOk || 0;
+  document.getElementById("statStreak").textContent = STATE.progress.streak || 0;
+
+  var totalLessons = LESSONS.length;
+  var totalStories = STORIES.length;
+  var totalExercises = 0;
+  for (var i = 0; i < LESSONS.length; i++) totalExercises += LESSONS[i].exercises.length;
+  var done = STATE.progress.lessonsDone.length + STATE.progress.storiesRead.length + STATE.progress.exercisesOk;
+  var total = totalLessons + totalStories + totalExercises;
+  var pct = total > 0 ? Math.min(100, Math.round(done / total * 100)) : 0;
+  document.getElementById("progressPct").textContent = pct + "%";
+  document.getElementById("progressFill").style.width = pct + "%";
+}
+
+/* ============ LECCIONES ============ */
+
+function renderLessonsGrid() {
+  var grid = document.getElementById("lessonGrid");
+  var html = "";
+  for (var i = 0; i < LESSONS.length; i++) {
+    var l = LESSONS[i];
+    var done = STATE.progress.lessonsDone.indexOf(l.id) !== -1;
+    html += '<div class="lesson-card' + (done ? " done" : "") + '" data-id="' + l.id + '">';
+    html += '<div class="num">Lección ' + l.id + '</div>';
+    html += '<div class="title">' + l.emoji + ' ' + l.title + '</div>';
+    html += '<div class="desc">' + l.desc + '</div>';
+    if (done) html += '<div class="check">✅</div>';
+    html += '</div>';
+  }
+  grid.innerHTML = html;
+  var cards = grid.querySelectorAll(".lesson-card");
+  for (var j = 0; j < cards.length; j++) {
+    cards[j].addEventListener("click", function() {
+      openLesson(parseInt(this.getAttribute("data-id"), 10));
+    });
+  }
+}
+
+function openLesson(id) {
+  var lesson = null;
+  for (var i = 0; i < LESSONS.length; i++) {
+    if (LESSONS[i].id === id) { lesson = LESSONS[i]; break; }
+  }
+  if (!lesson) return;
+  STATE.currentLesson = lesson;
+
+  document.getElementById("lessonsIndex").style.display = "none";
+  var det = document.getElementById("lessonDetail");
+  det.style.display = "block";
+
+  var html = '<button class="back-btn" id="backLesson">← Volver a lecciones</button>';
+  html += '<div class="lesson-view" id="lessonPrintArea">';
+  html += '<div class="lesson-header">';
+  html += '<div><h1>' + lesson.emoji + ' ' + lesson.title + '</h1>';
+  html += '<p style="color:var(--ink-soft);margin:0;">' + lesson.desc + '</p></div>';
+  html += '<div class="lesson-controls">';
+  html += '<div class="audio-toggle">';
+  html += '<button data-lang="es" class="' + (STATE.audioLang === "es" ? "active" : "") + '">🇪🇸 ES</button>';
+  html += '<button data-lang="en" class="' + (STATE.audioLang === "en" ? "active" : "") + '">🇬🇧 EN</button>';
+  html += '</div>';
+  html += '<button class="btn secondary small" id="btnAudio">🔊 Escuchar</button>';
+  html += '<button class="btn tertiary small" id="btnPrint">🖨️ Imprimir / PDF</button>';
+  html += '</div></div>';
+
+  html += '<h2>📘 Teoría</h2>';
+  html += '<div class="theory-content">' + lesson.theory + '</div>';
+
+  if (lesson.table) {
+    html += '<h3>📋 Resumen</h3>';
+    html += '<table><thead><tr>';
+    for (var th = 0; th < lesson.table.headers.length; th++) {
+      html += '<th>' + lesson.table.headers[th] + '</th>';
+    }
+    html += '</tr></thead><tbody>';
+    for (var r = 0; r < lesson.table.rows.length; r++) {
+      html += '<tr>';
+      for (var c = 0; c < lesson.table.rows[r].length; c++) {
+        html += '<td>' + lesson.table.rows[r][c] + '</td>';
+      }
+      html += '</tr>';
+    }
+    html += '</tbody></table>';
+  }
+
+  html += '<h3>💡 Ejemplos</h3>';
+  for (var ex = 0; ex < lesson.examples.length; ex++) {
+    html += '<div class="example-box">';
+    html += '<div class="en">' + lesson.examples[ex].en + '</div>';
+    html += '<div class="es">' + lesson.examples[ex].es + '</div>';
+    html += '</div>';
+  }
+
+  html += '<h3>🎯 Ejercicios</h3>';
+  for (var eq = 0; eq < lesson.exercises.length; eq++) {
+    var exc = lesson.exercises[eq];
+    html += '<div class="exercise" data-idx="' + eq + '">';
+    html += '<div class="question">' + (eq + 1) + '. ' + exc.q + '</div>';
+    if (exc.type === "mc") {
+      html += '<div class="options">';
+      for (var o = 0; o < exc.options.length; o++) {
+        html += '<div class="option" data-opt="' + o + '">' + exc.options[o] + '</div>';
+      }
+      html += '</div>';
+    } else if (exc.type === "fill") {
+      html += '<input type="text" data-answer="' + escapeHtml(exc.answer) + '" placeholder="Escribí tu respuesta...">';
+      html += '<button class="btn small" style="margin-top:0.5rem;" data-check="' + eq + '">Verificar</button>';
+    }
+    html += '<div class="feedback"></div>';
+    html += '</div>';
+  }
+
+  html += '<div style="margin-top:2rem;text-align:center;">';
+  html += '<button class="btn tertiary" id="btnMarkDone">✅ Marcar como completada</button>';
+  html += '</div>';
+
+  html += '</div>';
+  det.innerHTML = html;
+
+  document.getElementById("backLesson").addEventListener("click", function() {
+    document.getElementById("lessonsIndex").style.display = "block";
+    det.style.display = "none";
+    renderLessonsGrid();
+  });
+
+  // toggle audio lang
+  var toggleBtns = det.querySelectorAll(".audio-toggle button");
+  for (var tb = 0; tb < toggleBtns.length; tb++) {
+    toggleBtns[tb].addEventListener("click", function() {
+      STATE.audioLang = this.getAttribute("data-lang");
+      var btns = det.querySelectorAll(".audio-toggle button");
+      for (var b = 0; b < btns.length; b++) btns[b].classList.remove("active");
+      this.classList.add("active");
+    });
+  }
+
+  document.getElementById("btnAudio").addEventListener("click", function() {
+    var text = STATE.audioLang === "en" ? lesson.audioTextEn : lesson.audioText;
+    speak(text, STATE.audioLang);
+  });
+
+  document.getElementById("btnPrint").addEventListener("click", function() {
+    window.print();
+  });
+
+  document.getElementById("btnMarkDone").addEventListener("click", function() {
+    if (STATE.progress.lessonsDone.indexOf(lesson.id) === -1) {
+      STATE.progress.lessonsDone.push(lesson.id);
+      saveProgress();
+      this.textContent = "✅ ¡Completada!";
+      this.disabled = true;
+    } else {
+      this.textContent = "Ya la habías completado 😊";
+    }
+  });
+
+  // exercise handlers
+  var exercises = det.querySelectorAll(".exercise");
+  for (var e2 = 0; e2 < exercises.length; e2++) {
+    var exElem = exercises[e2];
+    var idx = parseInt(exElem.getAttribute("data-idx"), 10);
+    var excData = lesson.exercises[idx];
+    if (excData.type === "mc") {
+      var opts = exElem.querySelectorAll(".option");
+      (function(opts, excData, exElem) {
+        for (var o2 = 0; o2 < opts.length; o2++) {
+          opts[o2].addEventListener("click", function() {
+            var chosen = parseInt(this.getAttribute("data-opt"), 10);
+            var fb = exElem.querySelector(".feedback");
+            if (chosen === excData.answer) {
+              this.classList.add("correct");
+              fb.className = "feedback show ok";
+              fb.textContent = "✅ ¡Correcto! " + excData.fb;
+              if (!this.getAttribute("data-counted")) {
+                STATE.progress.exercisesOk = (STATE.progress.exercisesOk || 0) + 1;
+                saveProgress();
+                this.setAttribute("data-counted", "1");
+              }
+            } else {
+              this.classList.add("wrong");
+              fb.className = "feedback show no";
+              fb.textContent = "❌ No. " + excData.fb;
+            }
+          });
+        }
+      })(opts, excData, exElem);
+    } else if (excData.type === "fill") {
+      (function(exElem, excData) {
+        var btn = exElem.querySelector("button[data-check]");
+        btn.addEventListener("click", function() {
+          var input = exElem.querySelector("input");
+          var val = input.value.trim().toLowerCase();
+          var correct = excData.answer.trim().toLowerCase();
+          var fb = exElem.querySelector(".feedback");
+          if (val === correct) {
+            fb.className = "feedback show ok";
+            fb.textContent = "✅ ¡Correcto! " + excData.fb;
+            if (!btn.getAttribute("data-counted")) {
+              STATE.progress.exercisesOk = (STATE.progress.exercisesOk || 0) + 1;
+              saveProgress();
+              btn.setAttribute("data-counted", "1");
+            }
+          } else {
+            fb.className = "feedback show no";
+            fb.textContent = "❌ Respuesta correcta: " + excData.answer + ". " + excData.fb;
+          }
+        });
+      })(exElem, excData);
+    }
+  }
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+/* ============ IRREGULAR VERBS ============ */
+
+var irregularState = { filter: "all", search: "" };
+
+function renderIrregulares() {
+  var container = document.getElementById("irregularTable");
+  var search = irregularState.search.toLowerCase().trim();
+  var filter = irregularState.filter;
+
+  var filtered = IRREGULAR_VERBS.filter(function(v) {
+    // v = [base, past, participle, es, star, cat]
+    if (filter === "top" && !v[4]) return false;
+    if (filter === "same" && v[5] !== "same") return false;
+    if (filter === "changing" && v[5] !== "changing") return false;
+    if (search) {
+      var allText = (v[0] + " " + v[1] + " " + v[2] + " " + v[3]).toLowerCase();
+      if (allText.indexOf(search) === -1) return false;
+    }
+    return true;
+  });
+
+  var html = '<div class="irregular-table-wrap">';
+  html += '<table><thead><tr>';
+  html += '<th>Base form</th>';
+  html += '<th>Past simple</th>';
+  html += '<th>Past participle</th>';
+  html += '<th>Traducción</th>';
+  html += '</tr></thead><tbody>';
+
+  if (filtered.length === 0) {
+    html += '<tr><td colspan="4" style="text-align:center;padding:2rem;color:var(--ink-soft);">No hay verbos que coincidan 🤷‍♀️</td></tr>';
+  } else {
+    for (var i = 0; i < filtered.length; i++) {
+      var v = filtered[i];
+      var star = v[4] ? '<span class="star">⭐</span> ' : '';
+      html += '<tr data-base="' + v[0] + '" data-past="' + v[1] + '" data-part="' + v[2] + '">';
+      html += '<td><span class="en-form">' + star + v[0] + '</span></td>';
+      html += '<td class="en-form">' + v[1] + '</td>';
+      html += '<td class="en-form">' + v[2] + '</td>';
+      html += '<td>' + v[3] + '</td>';
+      html += '</tr>';
+    }
+  }
+
+  html += '</tbody></table>';
+  html += '<div class="irregular-count">Mostrando ' + filtered.length + ' de ' + IRREGULAR_VERBS.length + ' verbos</div>';
+  html += '</div>';
+
+  container.innerHTML = html;
+
+  // Click en fila = pronuncia las 3 formas
+  var rows = container.querySelectorAll("tbody tr[data-base]");
+  for (var j = 0; j < rows.length; j++) {
+    rows[j].addEventListener("click", function() {
+      var base = this.getAttribute("data-base");
+      var past = this.getAttribute("data-past");
+      var part = this.getAttribute("data-part");
+      // past puede tener "was/were" — usamos solo la primera
+      var cleanPast = past.split("/")[0].trim();
+      var cleanPart = part.split("/")[0].trim();
+      speak(base + ", " + cleanPast + ", " + cleanPart, "en");
+    });
+  }
+}
+
+function setupIrregularControls() {
+  var searchInput = document.getElementById("irregularSearch");
+  if (searchInput) {
+    searchInput.addEventListener("input", function() {
+      irregularState.search = this.value;
+      renderIrregulares();
+    });
+  }
+  var filterBtns = document.querySelectorAll(".filter-btn");
+  for (var i = 0; i < filterBtns.length; i++) {
+    filterBtns[i].addEventListener("click", function() {
+      var btns = document.querySelectorAll(".filter-btn");
+      for (var k = 0; k < btns.length; k++) btns[k].classList.remove("active");
+      this.classList.add("active");
+      irregularState.filter = this.getAttribute("data-filter");
+      renderIrregulares();
+    });
+  }
+}
+
+/* ============ HISTORIAS ============ */
+
+function renderStoriesGrid() {
+  var grid = document.getElementById("storyGrid");
+  var html = "";
+  for (var i = 0; i < STORIES.length; i++) {
+    var s = STORIES[i];
+    html += '<div class="story-card" data-id="' + s.id + '">';
+    html += '<div class="emoji-hero">' + s.emoji + '</div>';
+    html += '<div class="body">';
+    html += '<div class="level">' + s.level + '</div>';
+    html += '<div class="title">' + s.title + '</div>';
+    html += '</div>';
+    html += '</div>';
+  }
+  grid.innerHTML = html;
+  var cards = grid.querySelectorAll(".story-card");
+  for (var j = 0; j < cards.length; j++) {
+    cards[j].addEventListener("click", function() {
+      openStory(parseInt(this.getAttribute("data-id"), 10));
+    });
+  }
+}
+
+function parseStoryText(text) {
+  // [[palabra|traducción]] -> span con data-trans
+  return text.replace(/\[\[([^\|\]]+)\|([^\]]+)\]\]/g, function(match, word, trans) {
+    return '<span class="word-link" data-trans="' + escapeHtml(trans) + '" data-word="' + escapeHtml(word) + '">' + word + '</span>';
+  });
+}
+
+function openStory(id) {
+  var story = null;
+  for (var i = 0; i < STORIES.length; i++) {
+    if (STORIES[i].id === id) { story = STORIES[i]; break; }
+  }
+  if (!story) return;
+  STATE.currentStory = story;
+
+  document.getElementById("storiesIndex").style.display = "none";
+  var det = document.getElementById("storyDetail");
+  det.style.display = "block";
+
+  var html = '<button class="back-btn" id="backStory">← Volver a historias</button>';
+  html += '<div class="story-view">';
+  html += '<div class="story-hero">' + story.emoji + '</div>';
+  html += '<h1 style="text-align:center;">' + story.title + '</h1>';
+  html += '<p class="subtitle" style="text-align:center;">' + story.level + '</p>';
+  html += '<div class="story-text">';
+  for (var p = 0; p < story.paragraphs.length; p++) {
+    html += '<p>' + parseStoryText(story.paragraphs[p]) + '</p>';
+  }
+  html += '</div>';
+  html += '<div style="margin-top:2rem;text-align:center;">';
+  html += '<button class="btn tertiary" id="btnStoryDone">✅ Marcar como leída</button>';
+  html += '</div>';
+  html += '</div>';
+  det.innerHTML = html;
+
+  document.getElementById("backStory").addEventListener("click", function() {
+    document.getElementById("storiesIndex").style.display = "block";
+    det.style.display = "none";
+    renderStoriesGrid();
+  });
+
+  document.getElementById("btnStoryDone").addEventListener("click", function() {
+    if (STATE.progress.storiesRead.indexOf(story.id) === -1) {
+      STATE.progress.storiesRead.push(story.id);
+      saveProgress();
+      this.textContent = "✅ ¡Leída!";
+      this.disabled = true;
+    }
+  });
+}
+
+/* ============ GEOGRAFIA ============ */
+
+function renderGeoGrid() {
+  var grid = document.getElementById("geoGrid");
+  var html = "";
+  for (var i = 0; i < GEO.length; i++) {
+    var g = GEO[i];
+    html += '<div class="geo-card" data-id="' + g.id + '">';
+    html += '<div class="hero" style="background:' + g.color + ';">' + g.emoji + '</div>';
+    html += '<div class="body">';
+    html += '<div class="title">' + g.name + '</div>';
+    html += '<div class="region">' + g.region + '</div>';
+    html += '</div></div>';
+  }
+  grid.innerHTML = html;
+  var cards = grid.querySelectorAll(".geo-card");
+  for (var j = 0; j < cards.length; j++) {
+    cards[j].addEventListener("click", function() {
+      openGeo(parseInt(this.getAttribute("data-id"), 10));
+    });
+  }
+}
+
+// Build dict regex once
+var DICT_REGEX = null;
+function buildDictRegex() {
+  var keys = Object.keys(DICT).sort(function(a, b) { return b.length - a.length; });
+  // escape word boundaries
+  var pattern = "\\b(" + keys.map(function(k) {
+    return k.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }).join("|") + ")\\b";
+  DICT_REGEX = new RegExp(pattern, "gi");
+}
+
+function autoLinkDict(text) {
+  if (!DICT_REGEX) buildDictRegex();
+  return text.replace(DICT_REGEX, function(match) {
+    var key = match.toLowerCase();
+    if (DICT[key]) {
+      return '<span class="word-auto" data-trans="' + escapeHtml(DICT[key]) + '" data-word="' + escapeHtml(match) + '">' + match + '</span>';
+    }
+    return match;
+  });
+}
+
+function openGeo(id) {
+  var g = null;
+  for (var i = 0; i < GEO.length; i++) {
+    if (GEO[i].id === id) { g = GEO[i]; break; }
+  }
+  if (!g) return;
+  STATE.currentGeo = g;
+
+  document.getElementById("geoIndex").style.display = "none";
+  var det = document.getElementById("geoDetail");
+  det.style.display = "block";
+
+  var html = '<button class="back-btn" id="backGeo">← Volver a UK</button>';
+  html += '<div class="geo-view">';
+  html += '<div class="geo-hero" style="background:' + g.color + ';">' + g.emoji + '</div>';
+  html += '<h1 style="text-align:center;">' + g.name + '</h1>';
+  html += '<p class="subtitle" style="text-align:center;">' + g.region + '</p>';
+
+  html += '<h2>📜 History</h2><p>' + autoLinkDict(g.history) + '</p>';
+  html += '<h2>🎭 Traditions</h2><p>' + autoLinkDict(g.traditions) + '</p>';
+  html += '<h2>🍽️ Food</h2><p>' + autoLinkDict(g.food) + '</p>';
+  html += '<h2>✨ Curiosities</h2><p>' + autoLinkDict(g.curiosities) + '</p>';
+
+  html += '</div>';
+  det.innerHTML = html;
+
+  document.getElementById("backGeo").addEventListener("click", function() {
+    document.getElementById("geoIndex").style.display = "block";
+    det.style.display = "none";
+    renderGeoGrid();
+  });
+}
+
+/* ============ TOOLTIPS ============ */
+
+var tooltipEl = null;
+function setupTooltips() {
+  tooltipEl = document.getElementById("tooltip");
+
+  document.body.addEventListener("mouseover", function(e) {
+    var t = e.target;
+    if (t && (t.classList.contains("word-link") || t.classList.contains("word-auto"))) {
+      showTooltip(t, e);
+    }
+  });
+
+  document.body.addEventListener("mousemove", function(e) {
+    if (tooltipEl && tooltipEl.classList.contains("visible")) {
+      positionTooltip(e.clientX, e.clientY);
+    }
+  });
+
+  document.body.addEventListener("mouseout", function(e) {
+    var t = e.target;
+    if (t && (t.classList.contains("word-link") || t.classList.contains("word-auto"))) {
+      hideTooltip();
+    }
+  });
+
+  // Touch support
+  document.body.addEventListener("click", function(e) {
+    var t = e.target;
+    if (t && (t.classList.contains("word-link") || t.classList.contains("word-auto"))) {
+      var rect = t.getBoundingClientRect();
+      showTooltip(t, {clientX: rect.left + rect.width / 2, clientY: rect.top});
+      setTimeout(hideTooltip, 2500);
+    }
+  });
+}
+
+function showTooltip(el, e) {
+  if (!tooltipEl) return;
+  var word = el.getAttribute("data-word") || "";
+  var trans = el.getAttribute("data-trans") || "";
+  tooltipEl.querySelector(".tt-word").textContent = word;
+  tooltipEl.querySelector(".tt-trans").textContent = trans;
+  positionTooltip(e.clientX, e.clientY);
+  tooltipEl.classList.add("visible");
+}
+
+function hideTooltip() {
+  if (!tooltipEl) return;
+  tooltipEl.classList.remove("visible");
+}
+
+function positionTooltip(x, y) {
+  if (!tooltipEl) return;
+  var rect = tooltipEl.getBoundingClientRect();
+  var left = x + 12;
+  var top = y + 16;
+  if (left + rect.width > window.innerWidth - 10) left = window.innerWidth - rect.width - 10;
+  if (top + rect.height > window.innerHeight - 10) top = y - rect.height - 12;
+  if (top < 10) top = 10;
+  if (left < 10) left = 10;
+  tooltipEl.style.left = left + "px";
+  tooltipEl.style.top = top + "px";
+}
+
+/* ============ PRONUNCIACION ============ */
+
+function renderPronunciation() {
+  var grid = document.getElementById("pronGrid");
+  var html = "";
+  for (var i = 0; i < PRON_WORDS.length; i++) {
+    var w = PRON_WORDS[i];
+    html += '<div class="pron-card" data-word="' + escapeHtml(w.word) + '">';
+    html += '<div class="word">' + w.word + '</div>';
+    html += '<div class="ipa">' + w.ipa + '</div>';
+    html += '<div class="trans">' + w.trans + '</div>';
+    html += '<div class="speaker">🔊</div>';
+    html += '</div>';
+  }
+  grid.innerHTML = html;
+  var cards = grid.querySelectorAll(".pron-card");
+  for (var j = 0; j < cards.length; j++) {
+    cards[j].addEventListener("click", function() {
+      speak(this.getAttribute("data-word"), "en");
+    });
+  }
+
+  var rulesDiv = document.getElementById("phoneticsRules");
+  var rhtml = '<table><thead><tr><th>Regla</th><th>Ejemplos</th><th>Tip</th></tr></thead><tbody>';
+  for (var r = 0; r < PHONETIC_RULES.length; r++) {
+    rhtml += '<tr><td><strong>' + PHONETIC_RULES[r].rule + '</strong></td>';
+    rhtml += '<td>' + PHONETIC_RULES[r].examples + '</td>';
+    rhtml += '<td>' + PHONETIC_RULES[r].tip + '</td></tr>';
+  }
+  rhtml += '</tbody></table>';
+  rulesDiv.innerHTML = rhtml;
+}
+
+/* ============ RECURSOS ============ */
+
+function renderResources() {
+  var container = document.getElementById("resourcesContent");
+  var html = "";
+  for (var i = 0; i < RESOURCES.length; i++) {
+    var sec = RESOURCES[i];
+    html += '<div class="resource-section">';
+    html += '<h2>' + sec.emoji + ' ' + sec.category + '</h2>';
+    html += '<div class="resource-grid">';
+    for (var j = 0; j < sec.items.length; j++) {
+      var it = sec.items[j];
+      html += '<a class="resource-card" href="' + it.url + '" target="_blank" rel="noopener">';
+      html += '<div class="channel">' + it.channel + '</div>';
+      html += '<div><span class="level-tag">' + it.level + '</span></div>';
+      html += '<p style="margin-top:0.5rem;margin-bottom:0;font-size:0.9rem;color:var(--ink-soft);">' + it.desc + '</p>';
+      html += '</a>';
+    }
+    html += '</div></div>';
+  }
+  container.innerHTML = html;
+}
+
+/* ============ WEB SPEECH API ============ */
+
+function speak(text, lang) {
+  if (!("speechSynthesis" in window)) {
+    alert("Tu navegador no tiene síntesis de voz 😕. Probá con Chrome o Edge.");
+    return;
+  }
+  window.speechSynthesis.cancel();
+  var utter = new SpeechSynthesisUtterance(text);
+  utter.lang = lang === "en" ? "en-GB" : "es-ES";
+  utter.rate = 0.95;
+  utter.pitch = 1;
+
+  // try to pick a matching voice
+  var voices = window.speechSynthesis.getVoices();
+  for (var i = 0; i < voices.length; i++) {
+    if (voices[i].lang && voices[i].lang.toLowerCase().indexOf(utter.lang.toLowerCase().substring(0,2)) === 0) {
+      utter.voice = voices[i];
+      break;
+    }
+  }
+  window.speechSynthesis.speak(utter);
+}
+
+/* ============ INIT ============ */
+
+document.addEventListener("DOMContentLoaded", function() {
+  loadProgress();
+  updateStreak();
+  renderDoodles();
+  setupNav();
+  renderInicio();
+  renderLessonsGrid();
+  renderIrregulares();
+  setupIrregularControls();
+  renderStoriesGrid();
+  renderGeoGrid();
+  renderPronunciation();
+  renderResources();
+  setupTooltips();
+
+  // Chrome requires a touch to load voices
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.onvoiceschanged = function() {};
+  }
+});
+</script>
+</body>
+</html>
